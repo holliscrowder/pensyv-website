@@ -1,0 +1,34 @@
+.App {
+    background: radial-gradient(#feabda, #feabda, #fe6b41);;
+    width: 100%;
+    height: 110%;
+    position: absolute; top: 0; left: 0; bottom: 0;
+  }
+
+.NavBar {
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    /* background-color: transparent; */
+    font-weight: bold;
+}
+
+.Outlet {
+    padding: 10px 10px 10px 10px;
+    /* text-align: left; */
+    color: 360A05;
+}
+
+.welcome {
+    position: absolute; left: 10%; top: 10%;
+}
+
+.logout {
+    position: absolute; right: 10%; top: 10%;
+}
+
+button {
+    background-color: #dc3895;
+    color: white;
+    border: 0.5px solid;
+    
+}

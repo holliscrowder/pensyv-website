@@ -1,0 +1,23 @@
+
+
+.signup_header {
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.signup {
+    text-align: center;
+    padding: 10px 4px;
+    background-color: rgb(246, 240, 240, 0.5);
+    width: 20%;
+    position: absolute; left: 40%;
+    border-radius: 8px;
+}
+
+.login_instead {
+    text-align: center;
+    position: relative; left: 40%;
+    width: 20%;
+    margin-top: 18%;
+
+}

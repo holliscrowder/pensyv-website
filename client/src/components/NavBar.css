@@ -1,0 +1,34 @@
+.NavBar {
+    padding: 10px 10px 10px 10px;
+    /* background-color: transparent; */
+    background-color: rgb(246, 240, 240, 0.5);
+}
+
+.navbar-header {
+    position: fixed;
+    width: 100%;
+    height: 81px;
+  }
+  
+  .navbar > a {
+    display: inline-block;
+    box-sizing: border-box;
+    border-color: white;
+    border-radius: 8px;
+    width: 150px;
+    text-decoration: none;
+    font-size: min(12vw, 16px);
+    color: #360A05;
+
+  }
+  
+  .navbar > a.active {
+    color: #dc3895;
+  }
+
+  .nav-link {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  

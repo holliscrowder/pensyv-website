@@ -1,0 +1,32 @@
+/* .survey_description {
+    text-align: left;
+    width: 60%;
+    padding: 0 20%;
+} */
+
+.mood_header {
+    text-align: center;
+    padding: 2% 0 2% 0;
+}
+
+.mood_instructions {
+    text-align: left;
+    /* width: 60%; */
+    padding: 0.2% 30%;
+}
+
+.survey {
+    text-align: left;
+    /* width: 60%; */
+    padding: 1%;
+    border-radius: 8px;
+}
+
+.submitted {
+    text-align: center;
+    padding: 2%;
+}
+
+.loading {
+    text-align: center;
+}

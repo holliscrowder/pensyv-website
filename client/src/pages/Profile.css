@@ -1,0 +1,19 @@
+.profile_header {
+    text-align: center;
+    padding: 2% 0 2% 0;
+}
+
+.profile_instructions {
+    text-align: center;
+    padding: 1%;
+}
+
+.profile {
+    text-align: left;
+    padding: 2%;
+}
+
+.updated {
+    text-align: center;
+    padding: 2%;
+}

@@ -1,0 +1,13 @@
+button {
+    padding: 4px 4px;
+    border: 10px transparent;
+    border-radius: 8px;
+}
+
+.signup {
+    text-align: center;
+}
+
+input {
+    text-align: left;
+}

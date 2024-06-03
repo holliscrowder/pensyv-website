@@ -1,0 +1,25 @@
+button {
+    padding: 4px 4px;
+    border: 10px transparent;
+    border-radius: 8px;
+}
+
+.profile {
+    text-align: center;
+    padding: 10px 4px;
+    background-color: rgb(246, 240, 240, 0.5);
+    width: 20%;
+    position: absolute; left: 40%;
+    border-radius: 8px;
+}
+
+input {
+    text-align: left;
+}
+
+li {
+    list-style: none;
+    padding: 2px;
+}
+
+
