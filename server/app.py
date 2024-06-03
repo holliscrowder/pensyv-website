@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, session, jsonify, make_response
+from flask import request, session, jsonify, make_response, render_template
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 
@@ -14,9 +14,13 @@ from config import app, db, api
 from models import User, Question, Questionnaire, Submission
 
 # Views go here!
-@app.route('/api')
+@app.route('/')
 def index():
-    return '<h1>Project Server</h1>'
+    return render_template("index.html")
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
 
 class Signup(Resource):
     def post(self):
