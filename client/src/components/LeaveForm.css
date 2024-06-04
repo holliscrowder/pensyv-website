@@ -1,12 +1,13 @@
-.leave {
+/* .leave {
     text-align: center;
-}
+    margin-top: min(36px, 20%);
+    margin-left: min(30%, 10px);
+} */
 
 .leave form {
     background-color: rgb(246, 240, 240, 0.5);
-    position: absolute; left: 38%;
-    width: 24%;
+    margin-left: min(30%, 10px);
     border-radius: 8px;
     padding: 10px 4px;
-    min-width: 200px;
+    min-width: min(40%, 200px);
 }

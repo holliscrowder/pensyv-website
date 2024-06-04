@@ -1,5 +1,6 @@
 .survey {
     background-color: rgb(246, 240, 240, 0.5);
-    width: 40%;
-    position: absolute; left: 30%;
+    width: min(80%, 400px);
+    margin-left: 10%;
+    padding: 10px 4px;
 }
