@@ -26,7 +26,7 @@ function Profile() {
       }, []);
 
 
-if (isUpdated === false & user) {
+if (isUpdated === false) {
     return (
         <>
             <div className = "profile_header">
@@ -41,7 +41,7 @@ if (isUpdated === false & user) {
         </>
       );
     }
-else if (isUpdated === true & user) {
+else if (isUpdated === true) {
         return (
             <div className = "updated">
                 <p>Profile Updated! What would you like to do next?</p>
@@ -57,7 +57,7 @@ else if (isUpdated === true & user) {
             </div>    
             )
     }
-  else {
+  else if (!user) {
     return (
       <div>
         <p>Whoops! Something went wrong.</p>

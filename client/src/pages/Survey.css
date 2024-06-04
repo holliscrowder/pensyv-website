@@ -38,7 +38,7 @@
 }
 
 .main {
-    min-width: min(100%, 250px);
+    width: min(100%, 250px);
     min-height: 600px;
     margin-top: min(36px, 25%);
 }

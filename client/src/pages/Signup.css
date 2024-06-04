@@ -9,17 +9,17 @@
     text-align: center;
     padding: 10px 4px;
     background-color: rgb(246, 240, 240, 0.5);
-    width: 20%;
-    position: absolute; left: 40%;
+    /* width: 20%; */
+    margin-left: 20%;
     border-radius: 8px;
-    min-width: 200px;
+    width: min(60%, 400px);
 }
 
 .login_instead {
     text-align: center;
     padding: 10px 10px 10px 10px;
-    position: absolute; left: 40%;
-    width: 20%;
+    margin-left: 20%;
+    width: min(60%, 400px);
     margin-top: 160px;
 
 }

@@ -8,7 +8,8 @@
     text-align: center;
     padding: 1%;
     margin-top: min(36px, 25%);
-    min-width: min(100%, 150px);
+    width: min(60%, 300px);
+    margin-left: 20%;
 }
 
 .profile {
