@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import NavBar from "./components/NavBar"
-import "./App.css"
+import NavBar from "./components/NavBar";
+import "./App.css";
+import { Link } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,25 +43,35 @@ function App() {
     })
   }
 
-  return (
-  <div className = "App">
-    <div className = "NavBar">
-      <NavBar user={user} isLoggedIn={isLoggedIn}/>
-      {isLoggedIn ? <button className = "logout" onClick = {handleLogout}>Logout</button> : <></>}
+  if (user) {
+    return (
+    <div className = "App">
+      <div className = "NavBar">
+        <NavBar user={user} isLoggedIn={isLoggedIn}/>
+        {isLoggedIn ? <button className = "logout" onClick = {handleLogout}>Logout</button> : <></>}
+      </div>
+      {user ? <p className = "welcome">Welcome, <i>{user.username}</i>!</p> :<></>}
+      <main className = "Outlet">
+        <Outlet 
+          context = {[
+            user,
+            setUser,
+            isLoggedIn,
+            handleLogout
+          ]}
+        />
+      </main>
     </div>
-    {user ? <p className = "welcome">Welcome, <i>{user.username}</i>!</p> :<></>}
-    <main className = "Outlet">
-      <Outlet 
-        context = {[
-          user,
-          setUser,
-          isLoggedIn,
-          handleLogout
-        ]}
-      />
-    </main>
-  </div>
-);
+  );
+  }
+  else {
+    return (
+        <div>
+            <p>Whoops! Something went wrong</p>
+            <Link to="/">Home</Link>
+        </div>
+        );
+  };
 }
 
 export default App;

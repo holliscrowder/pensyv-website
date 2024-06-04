@@ -26,7 +26,7 @@ function Profile() {
       }, []);
 
 
-if (isUpdated == false) {
+if (isUpdated === false & user) {
     return (
         <>
             <div className = "profile_header">
@@ -41,7 +41,7 @@ if (isUpdated == false) {
         </>
       );
     }
-      else {
+else if (isUpdated === true & user) {
         return (
             <div className = "updated">
                 <p>Profile Updated! What would you like to do next?</p>
@@ -57,6 +57,14 @@ if (isUpdated == false) {
             </div>    
             )
     }
+  else {
+    return (
+      <div>
+        <p>Whoops! Something went wrong.</p>
+        <Link to="/">Home</Link>
+      </div>
+    )
+  }
 }
 
 export default Profile;

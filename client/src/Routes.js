@@ -5,11 +5,13 @@ import Login from "./pages/Login";
 import Survey from "./pages/Survey";
 import Profile from "./pages/Profile";
 import Leave from "./pages/Leave";
+import ErrorPage from "./pages/ErrorPage";
 
 const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
