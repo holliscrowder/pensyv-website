@@ -10,5 +10,13 @@
     width: 20%;
     position: absolute; left: 40%;
     border-radius: 8px;
+    min-width: 200px;
+}
+
+.main {
+    display: flex;
+    width: 40%;
+    min-width: 200px;
+    min-height: 400px;
 }
 

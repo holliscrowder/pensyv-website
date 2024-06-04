@@ -2,6 +2,7 @@
     padding: 10px 10px 10px 10px;
     /* background-color: transparent; */
     background-color: rgb(246, 240, 240, 0.5);
+    min-width: 400px;
 }
 
 .navbar-header {

@@ -12,12 +12,14 @@
     width: 20%;
     position: absolute; left: 40%;
     border-radius: 8px;
+    min-width: 200px;
 }
 
 .login_instead {
     text-align: center;
-    position: relative; left: 40%;
+    padding: 10px 10px 10px 10px;
+    position: absolute; left: 40%;
     width: 20%;
-    margin-top: 18%;
+    margin-top: 160px;
 
 }

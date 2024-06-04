@@ -3,6 +3,7 @@
     width: 100%;
     height: 110%;
     position: absolute; top: 0; left: 0; bottom: 0;
+    min-width: 400px;
   }
 
 .NavBar {
@@ -19,11 +20,13 @@
 }
 
 .welcome {
-    position: absolute; left: 10%; top: 10%;
+    position: absolute; left: 10%;
+    margin-top: min(24px, 10%);
 }
 
 .logout {
-    position: absolute; right: 10%; top: 10%;
+    position: absolute; right: 10%;
+    margin-top: min(24px, 10%);
 }
 
 button {

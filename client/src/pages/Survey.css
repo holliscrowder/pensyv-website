@@ -13,6 +13,7 @@
     text-align: left;
     /* width: 60%; */
     padding: 0.2% 30%;
+    min-width: 400px;
 }
 
 .survey {
@@ -20,6 +21,7 @@
     /* width: 60%; */
     padding: 1%;
     border-radius: 8px;
+    min-width: 400px;
 }
 
 .submitted {
@@ -29,4 +31,10 @@
 
 .loading {
     text-align: center;
+}
+
+.main {
+    min-width: 400px;
+    min-height: 600px;
+    margin-top: min(36px, 20%);
 }
