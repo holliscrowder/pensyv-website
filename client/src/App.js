@@ -43,8 +43,7 @@ function App() {
     })
   }
 
-  if (user) {
-    return (
+return (
     <div className = "App">
       <div className = "NavBar">
         <NavBar user={user} isLoggedIn={isLoggedIn}/>
@@ -63,15 +62,6 @@ function App() {
       </main>
     </div>
   );
-  }
-  else {
-    return (
-        <div>
-            <p>Whoops! Something went wrong</p>
-            <Link to="/">Home</Link>
-        </div>
-        );
-  };
 }
 
 export default App;
