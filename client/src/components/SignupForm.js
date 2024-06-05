@@ -8,15 +8,35 @@ export const SignupForm = ({user, setUser}) => {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
 
+    /* add password confirm function */
+    function equalTo(ref: any, msg: any) {
+        return yup.mixed().test({
+          name: 'equalTo',
+          exclusive: false,
+          message: msg || '${path} must be the same as ${reference}',
+          params: {
+            reference: ref.path,
+          },
+          test: function(value: any) {
+            return value === this.resolve(ref);
+          },
+        });
+      }
+      yup.addMethod(yup.string, 'equalTo', equalTo);
+
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
-        username: yup.string().required("Must enter username").max(50)
+        username: yup.string().required("Must enter username").max(50),
+        password: yup.string().required("Must enter valid password"),
+        passwordConfirm: yup.string().equalTo(yup.ref('password'), 'Passwords must match').required('Required')
     })
 
     const formik = useFormik({
         initialValues: {
             email: "",
             username: "",
+            password: "",
+            passwordConfirm: ""
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -54,20 +74,44 @@ export const SignupForm = ({user, setUser}) => {
                 <input
                     id = "email"
                     name = "email"
+                    placeholder = "email"
                     onChange = {formik.handleChange}
                     value = {formik.values.email}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.email}</p>
                 <label htmlFor = "username">Username</label>
                 <br />
-
                 <input 
                     id = "username"
                     name = "username"
+                    placeholder = "username"
                     onChange = {formik.handleChange}
                     value = {formik.values.username}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.username}</p>
+                <label htmlFor = "password">Password</label>
+                <br />
+                <input 
+                    id = "password"
+                    name = "password"
+                    placeholder = "password"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.password}
+                    onBlur={formik.handleBlur}
+                />
+                <p style = {{ color: "red" }}> {formik.errors.password}</p>
+                <label htmlFor = "passwordConfirm">Confirn Password</label>
+                <br />
+                <input 
+                    id = "passwordConfirm"
+                    name = "passwordConfirm"
+                    placeholder = "confirm password"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.passwordConfirm}
+                    onBlur={formik.handleBlur}
+                    secureTextEntry
+                />
+                <p style = {{ color: "red" }}> {formik.errors.passwordConfirm}</p>
                 <button type = "submit">Sign Up</button>
             </form>
             {errorMessage && <div className = "error-message">{errorMessage}</div>}
