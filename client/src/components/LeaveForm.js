@@ -47,6 +47,7 @@ export const LeaveForm = () => {
                 <input
                     id = "email"
                     name = "email"
+                    placeholder = "email"
                     onChange = {formik.handleChange}
                     value = {formik.values.email}
                 />
@@ -57,6 +58,7 @@ export const LeaveForm = () => {
                 <input 
                     id = "username"
                     name = "username"
+                    placeholder = "username"
                     onChange = {formik.handleChange}
                     value = {formik.values.username}
                 />

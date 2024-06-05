@@ -54,6 +54,7 @@ export const LoginForm = ({user, setUser}) => {
                     <input
                         id = "email"
                         name = "email"
+                        placeholder = "email"
                         onChange = {formik.handleChange}
                         value = {formik.values.email.toLowerCase()}
                     />
@@ -63,6 +64,7 @@ export const LoginForm = ({user, setUser}) => {
                     <input
                         id = "password"
                         name = "password"
+                        placeholder = "password"
                         onChange = {formik.handleChange}
                         value = {formik.values.password}
                     />
