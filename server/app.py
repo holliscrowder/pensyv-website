@@ -40,6 +40,7 @@ class Signup(Resource):
                     username = json.get("username"),
                     email = json.get("email")
                 )
+                user.password_hash = json.get("password")
 
                 # update session info
                 db.session.add(user)
@@ -59,7 +60,7 @@ class Signup(Resource):
 class CheckSession(Resource):
     def get(self):
         # check if session has user ID
-        if session["user_id"]:
+        if session.get("user_id"):
             # create user based on unique user ID
             user = User.query.filter(User.id == session["user_id"]).first()
             
@@ -73,8 +74,9 @@ class Login(Resource):
     def post(self):
         # set session ID
         email = request.get_json().get("email")
+        password = request.get_json().get("password")
         user = User.query.filter_by(email=email).first()
-        if user:
+        if user.authenticate(password):
             session["user_id"] = user.id
             user_response = jsonify(user.to_dict())
         # return user info
@@ -83,7 +85,7 @@ class Login(Resource):
             
         # check for errors
         else:
-            return make_response({"email_status": "Unauthorized email"}, 401)
+            return make_response({"email_status": "Unauthorized email and/or password"}, 401)
         
 class Logout(Resource):
     def delete(self):

@@ -9,12 +9,14 @@ export const LoginForm = ({user, setUser}) => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const formSchema = yup.object().shape({
-        email: yup.string().email("Invalid email format").required("Must enter valid email format")
+        email: yup.string().email("Invalid email format").required("Must enter valid email format"),
+        password: yup.string().required("Must enter password")
     })
 
     const formik = useFormik({
         initialValues: {
             email: "",
+            password: ""
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -53,9 +55,18 @@ export const LoginForm = ({user, setUser}) => {
                         id = "email"
                         name = "email"
                         onChange = {formik.handleChange}
-                        value = {formik.values.email}
+                        value = {formik.values.email.toLowerCase()}
                     />
                     <p style = {{ color: "red" }}> {formik.errors.email}</p>
+                    <label htmlFor = "password">Password</label>
+                    <br />
+                    <input
+                        id = "password"
+                        name = "password"
+                        onChange = {formik.handleChange}
+                        value = {formik.values.password}
+                    />
+                    <p style = {{ color: "red" }}> {formik.errors.password}</p>
                     <button type = "submit">Login</button>
                 </form>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}

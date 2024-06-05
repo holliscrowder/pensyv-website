@@ -39,6 +39,13 @@ class User(db.Model, SerializerMixin):
         if len(username) > 100:
             raise ValueError("Username can't be over 100 characters.")
         return username
+    
+    @validates("email")
+    def validate_email(self, _, email):
+        if email.find("@"):
+            return email.lower()
+        else:
+            raise ValueError("email does not contain domain.")
 
     # serialization rules
     serialize_rules = ("-submissions",)
