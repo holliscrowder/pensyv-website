@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from os import environ
 from dotenv import load_dotenv
+from flask_bcrypt import Bcrypt
 
 # Local imports
 load_dotenv(".env")
@@ -24,6 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 app.secret_key = environ.get("SECRET_KEY")
+bcrypt = Bcrypt(app)
 
 # Define metadata, instantiate db
 metadata = MetaData(naming_convention={

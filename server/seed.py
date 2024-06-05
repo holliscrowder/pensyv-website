@@ -14,15 +14,19 @@ if __name__ == '__main__':
     with app.app_context():
         
         print("Deleting all records... ")
-        User.query.delete()
-        Question.query.delete()
         Questionnaire.query.delete()
         Submission.query.delete()
-
+        Question.query.delete()
+        User.query.delete()
+        
         print("Creating users...")
         user1 = User(username = "user1", email = "user1@gmail.com")
         user2 = User(username = "user2", email = "user2@gmail.com")
         user3 = User(username = "user3", email = "user3@gmail.com")
+
+        user1.password_hash = user1.username + "password"
+        user2.password_hash = user2.username + "password"
+        user3.password_hash = user3.username + "password"
 
         users = [user1, user2, user3]
         db.session.add_all(users)
