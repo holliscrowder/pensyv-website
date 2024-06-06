@@ -32,7 +32,7 @@ function Survey() {
                 <>
                 <main>
                     <h2 className = "mood_header"> Daily Mood Questionnaire </h2>
-                        <p className = "mood_instructions">The following questions will ask you for a response on a scale of 0-4 based on how you felt  
+                        {/* <p className = "mood_instructions">The following questions will ask you for a response on a scale of 0-4 based on how you felt  
                             <b> in the past 24 hours:</b>
                         </p>
                         <p className = "mood_instructions">
@@ -49,7 +49,7 @@ function Survey() {
                         </p>
                         <p className = "mood_instructions">
                             0 - Not at All: I <b> never </b> felt like this at any point.
-                        </p>
+                        </p> */}
                     <SurveyForm className = "survey" formSubmitted={formSubmitted} setFormSubmitted={setFormSubmitted}/>
                 </main>
                 </>

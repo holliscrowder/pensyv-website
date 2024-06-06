@@ -73,6 +73,8 @@ if __name__ == '__main__':
         db.session.add_all(submissions)
         db.session.commit()
 
+        submission1.created_on = 
+
         print("Creating Questionnaires...")
 
         # user 1

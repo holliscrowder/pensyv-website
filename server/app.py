@@ -76,7 +76,7 @@ class Login(Resource):
         email = request.get_json().get("email")
         password = request.get_json().get("password")
         user = User.query.filter_by(email=email).first()
-        if user.authenticate(password):
+        if user and user.authenticate(password):
             session["user_id"] = user.id
             user_response = jsonify(user.to_dict())
         # return user info
@@ -138,8 +138,17 @@ class Users(Resource):
     def delete(self):
         # find user to delete
         user = User.query.filter(User.id == session["user_id"]).first()
+
+        # check that user details submitted in the 'leave' form match the session user details
+        user_data = request.get_json()
+        form_email = user_data.get("email")
+        form_password = user_data.get("password")
+
         if not user:
             return make_response({"error": "User not found"}, 404)
+        
+        elif not user.authenticate(form_password) or user.email != form_email:
+            return make_response({"error": "User information not authenticated."}, 401)
         
         # delete user
         db.session.delete(user)

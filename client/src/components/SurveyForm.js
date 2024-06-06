@@ -20,6 +20,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
         question3: yup.number().required("Must enter valid score between (0-4)").min(0).max(4),
         question4: yup.number().required("Must enter valid score between (0-4)").min(0).max(4),
         question5: yup.number().required("Must enter valid score between (0-4)").min(0).max(4),
+        checked: yup.bool()
     })
 
 
@@ -29,7 +30,8 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
             question2: "",
             question3: "",
             question4: "",
-            question5: ""
+            question5: "",
+            checked: false
         },
         validationSchema: formSchema,
         onSubmit: 
@@ -64,6 +66,26 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
                     value = {formik.values.question1}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.question1}</p>
+                <div className = "mood_instructions">
+                    <p> <i>The following questions will ask you for a response on a scale of 0-4 based on how you felt  
+                    <b> in the past 24 hours:</b>
+                    </i></p>
+                    <p>
+                        <i><b>4</b> - Extremely: This statement applies <b> without exception.</b></i>
+                    </p>
+                    <p>
+                        <i><b>3</b> - Quite a Lot: This statement<b> pretty much </b> summarizes how I felt.</i>
+                    </p>
+                    <p>
+                        <i><b>2</b> - Moderately: I felt like this <b> around half of the time. </b></i>
+                    </p>
+                    <p>
+                        <i><b>1</b> - A Little: I felt like this <b> sometimes. </b></i>
+                    </p>
+                    <p>
+                        <i><b>0</b> - Not at All: I <b> never </b> felt like this at any point.</i>
+                    </p>
+                </div>
                 <label htmlFor = "question2">{questions[1].question_text}</label>
                 <br />
                 <input
@@ -100,7 +122,15 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
                     value = {formik.values.question5}
                 />
                 <p style = {{ color: "red" }}>{formik.errors.question5}</p>
-                
+                <input
+                    className = "checked"
+                    type = "checkbox" 
+                    id = "checked"
+                    name = "checked"
+                    value = {formik.values.checked}
+                />
+                <label htmlFor = "checked">I feel sick or something bad happened to me</label>
+                <br />
                 <button type = "submit">Submit Questionnaire</button>
             </form>
         </div>

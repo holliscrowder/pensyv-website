@@ -1,27 +1,11 @@
-/* .survey_description {
-    text-align: left;
-    width: 60%;
-    padding: 0 20%;
-} */
-
 .mood_header {
     text-align: center;
     padding: 2% 0 2% 0;
     margin-top: min(36px, 20%);
 }
 
-.mood_instructions {
-    text-align: left;
-    width: 60%;
-    margin-left: 10%;
-    width: min(80%, 400px);
-    font-size: 14px;
-}
-
 .survey {
     text-align: left;
-    /* width: 60%; */
-    /* padding: 1%; */
     border-radius: 8px;
     width: min(100%, 400px);
 }
