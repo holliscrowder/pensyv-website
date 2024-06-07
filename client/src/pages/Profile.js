@@ -49,9 +49,6 @@ else if (isUpdated === true) {
                 <li>
                     <Link to="/survey">Survey</Link> 
                 </li>  
-                <li>
-                    <Link to="/profile">Update Profile</Link> 
-                </li> 
             </div>    
             )
     }

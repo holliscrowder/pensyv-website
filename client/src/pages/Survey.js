@@ -63,9 +63,6 @@ function Survey() {
                         <Link to="/">Home</Link>
                     </li>  
                     <li>
-                        <Link to="/survey">Re-submit Survey</Link> 
-                    </li>  
-                    <li>
                         <Link to="/profile">User Profile</Link> 
                     </li> 
                 </div>    
