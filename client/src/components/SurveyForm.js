@@ -127,6 +127,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
                     type = "checkbox" 
                     id = "checked"
                     name = "checked"
+                    onChange={formik.handleChange}
                     value = {formik.values.checked}
                 />
                 <label htmlFor = "checked">I feel sick or something bad happened to me</label>

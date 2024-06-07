@@ -20,9 +20,9 @@ if __name__ == '__main__':
         User.query.delete()
         
         print("Creating users...")
-        user1 = User(username = "user1", email = "user1@gmail.com")
-        user2 = User(username = "user2", email = "user2@gmail.com")
-        user3 = User(username = "user3", email = "user3@gmail.com")
+        user1 = User(username = "user1", email = "user1@gmail.com", sex = "M", age = 27)
+        user2 = User(username = "user2", email = "user2@gmail.com", sex = "F", age = 34)
+        user3 = User(username = "user3", email = "user3@gmail.com", sex = "F", age = 42)
 
         user1.password_hash = user1.username + "password"
         user2.password_hash = user2.username + "password"
@@ -73,7 +73,6 @@ if __name__ == '__main__':
         db.session.add_all(submissions)
         db.session.commit()
 
-        submission1.created_on = 
 
         print("Creating Questionnaires...")
 

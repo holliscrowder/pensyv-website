@@ -147,7 +147,7 @@ class Users(Resource):
         if not user:
             return make_response({"error": "User not found"}, 404)
         
-        elif not user.authenticate(form_password) or user.email != form_email:
+        elif not user.authenticate(form_password) or user.email != form_email.lower():
             return make_response({"error": "User information not authenticated."}, 401)
         
         # delete user
@@ -168,26 +168,29 @@ class Questionnaires(Resource):
         print(questionnaires)
         new_questionnaires = []
         try:
-            new_submission = Submission(user_id = session["user_id"])
+            new_submission = Submission(user_id = session["user_id"], checked = questionnaires["checked"])
             db.session.add(new_submission)
             db.session.commit()
 
-            i = 1
+            i = Question.query.first().id
+            # record questionnaires for each question except for the boolean "checked"
             for questionnaire in questionnaires:
-                question_id = f"{i}"
-                score = questionnaires[questionnaire]
-                submission_id = new_submission.id
+                if questionnaire != "checked":
+                    question_id = f"{i}"
+                    score = questionnaires[questionnaire]
+                    submission_id = new_submission.id
 
-                new_questionnaire = Questionnaire(question_id = question_id, score = score, submission_id = submission_id)
-                db.session.add(new_questionnaire)
-                db.session.commit()
-                new_questionnaires.append(new_questionnaire)
+                    new_questionnaire = Questionnaire(question_id = question_id, score = score, submission_id = submission_id)
+                    db.session.add(new_questionnaire)
+                    db.session.commit()
+                    new_questionnaires.append(new_questionnaire)
                 i += 1
             questionnaires_response = jsonify([questionnaire.to_dict() for questionnaire in new_questionnaires])
 
             return make_response(questionnaires_response, 201)      
         # check for errors
-        except IntegrityError:
+        except IntegrityError as e:
+            print(e)
             return make_response({"error": "Database relational integrity error"}, 422)
 
 api.add_resource(Signup, "/api/signup", endpoint = "signup")

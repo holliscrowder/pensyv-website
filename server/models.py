@@ -11,7 +11,11 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer(), primary_key = True)
     username = db.Column(db.String(), unique = True, nullable = False)
     email = db.Column(db.String(), unique = True, nullable = False)
+    sex = db.Column(db.String())
+    age = db.Column(db.Integer())
     _password_hash = db.Column(db.String)
+
+    __table_args__ = (db.CheckConstraint("sex = M OR sex = F OR sex = I"), db.CheckConstraint("age > 0 AND age < 130"))
 
     # authentication
     @hybrid_property
@@ -32,6 +36,7 @@ class User(db.Model, SerializerMixin):
     submissions = db.relationship("Submission", back_populates = "user", cascade = "all, delete")
     questionnaires = association_proxy("User", "submissions")
 
+    # validations
     @validates("username")
     def validate_username(self, _, username):
         if not isinstance(username, str):
@@ -45,7 +50,19 @@ class User(db.Model, SerializerMixin):
         if email.find("@"):
             return email.lower()
         else:
-            raise ValueError("email does not contain domain.")
+            raise ValueError("Email does not contain domain.")
+        
+    @validates("age")
+    def validate_age(self, _, age):
+        if age < 0 or age > 130 or not isinstance(age, int):
+            return ValueError("Age must be an integer between 0 and 130.")
+        return age
+    
+    @validates("sex")
+    def validate_sex(self, _, sex):
+        if sex.upper() not in ("M", "F", "I"):
+            return ValueError("Sex must be either M, F, or I.")
+        return sex.upper()
 
     # serialization rules
     serialize_rules = ("-submissions",)
@@ -97,6 +114,7 @@ class Submission(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey("users.id"))
+    checked = db.Column(db.Boolean())
     created_on = db.Column(db.DateTime(), server_default = db.func.now())
     updated_on = db.Column(db.DateTime(), server_default = db.func.now())
 
@@ -108,7 +126,7 @@ class Submission(db.Model, SerializerMixin):
     serialize_rules = ("-user", "-questionnaire")
 
     def __repr__(self):
-        return f"<Survey {self.id}: [user_id] {self.user_id} [created_on] {self.created_on} [updated_on] {self.updated_on} >"
+        return f"<Survey {self.id}: [user_id] {self.user_id} [checked] {self.checked} [created_on] {self.created_on} [updated_on] {self.updated_on} >"
     
 
 

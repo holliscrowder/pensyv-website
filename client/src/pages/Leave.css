@@ -3,6 +3,6 @@
     padding: 1%;
     margin-top: min(36px, 20%);
     /* min-width: min(60%, 100px); */
-    width: min(80%, 300px);
-    margin-left: 10%;
+    width: min(80%, 400px);
+    margin-left: min(10%, 100px);
 }
