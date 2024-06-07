@@ -33,8 +33,15 @@ if (isUpdated === false) {
             <div className = "profile_header">
                 <h2>User Profile</h2>
             </div>
-            <ProfileCard />
-            <p>You can update your user profile details at any time.</p>
+            <div className = "profile_body">
+              <ProfileCard className = "profile_card"/>
+              <br />
+              <p>You can update your user profile details at any time. </p>
+              <br />
+              <p>If you wish to leave a characteristic as-is, </p>
+              <p>simply leave that field blank, or select "prefer not to say", as appropriate</p>
+              <br />
+            </div>
             <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
         </>
       );

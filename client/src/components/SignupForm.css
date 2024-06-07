@@ -4,6 +4,11 @@ button {
     border-radius: 8px;
 }
 
+input {
+    text-align: left;
+    border-radius: 4px;
+}
+
 /* .signup {
     text-align: left;
 }

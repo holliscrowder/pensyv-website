@@ -1,7 +1,7 @@
 .survey {
     background-color: rgb(246, 240, 240, 0.5);
     width: min(80%, 620px);
-    margin-left: 10%;
+    margin: auto;
     padding: 10px 4px;
 }
 
@@ -12,6 +12,7 @@ div.mood_instructions {
 
 input {
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 input.checked {

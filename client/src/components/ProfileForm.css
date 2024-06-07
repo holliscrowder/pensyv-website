@@ -13,13 +13,9 @@ button {
     border-radius: 8px;
 }
 
-input {
+input, select {
     text-align: left;
-}
-
-li {
-    list-style: none;
-    padding: 2px;
+    border-radius: 4px;
 }
 
 
