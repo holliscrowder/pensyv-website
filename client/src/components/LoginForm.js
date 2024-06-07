@@ -69,6 +69,7 @@ export const LoginForm = ({user, setUser}) => {
                         value = {formik.values.password}
                     />
                     <p style = {{ color: "red" }}> {formik.errors.password}</p>
+                    <br />
                     <button type = "submit">Login</button>
                 </form>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}

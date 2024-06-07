@@ -95,6 +95,7 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                     </option>
                 </select>
                 <p style = {{ color: "red" }}> {formik.errors.age}</p>
+                <br />
                 <button type = "submit">Update Profile</button>
             </form>
         </div>
