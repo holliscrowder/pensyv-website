@@ -123,8 +123,14 @@ class Users(Resource):
         user_data = request.get_json()
         try:
             # update user info
-            user.username = user_data.get("username")
-            user.email = user_data.get("email")
+            if user_data.get("email"):
+                user.email = user_data.get("email")
+            if user_data.get("username"):
+                user.username = user_data.get("username")
+            if user_data.get("age"):
+                user.age = user_data.get("age")
+            if user_data.get("sex"):
+                user.sex = user_data.get("sex")
             db.session.add(user)
             db.session.commit()
             user_response = jsonify(user.to_dict())

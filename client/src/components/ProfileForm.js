@@ -8,14 +8,18 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
     
 
     const formSchema = yup.object().shape({
-        email: yup.string().email("Invalid email").required("Must enter valid email"),
-        username: yup.string().required("Must enter username").max(50)
+        email: yup.string().email("Invalid email"),
+        username: yup.string().max(50),
+        age: yup.number().min(0).max(130),
+        sex: yup.string(),
     })
 
     const formik = useFormik({
         initialValues: {
             email: "",
             username: "",
+            age: "",
+            sex: ""
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -52,7 +56,6 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                 <p style = {{ color: "red" }}> {formik.errors.email}</p>
                 <label htmlFor = "username">Username</label>
                 <br />
-
                 <input 
                     id = "username"
                     name = "username"
@@ -60,6 +63,38 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                     value = {formik.values.username}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.username}</p>
+                <label htmlFor = "age">Age</label>
+                <br />
+                <input 
+                    id = "age"
+                    name = "age"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.age}
+                />
+                <p style = {{ color: "red" }}> {formik.errors.age}</p>
+                <label htmlFor = "sex">Sex</label>
+                <br />
+                <select 
+                    id = "sex"
+                    name = "sex"
+                    placeholder = "sex (optional"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.sex}
+                >
+                    <option value = "" label = "prefer not to say">
+                        prefer not to say
+                    </option>
+                    <option value = "F" label = "female">
+                        female
+                    </option>
+                    <option value = "M" label = "male">
+                        male
+                    </option>
+                    <option value = "I" label = "indeterminate">
+                        indeterminate
+                    </option>
+                </select>
+                <p style = {{ color: "red" }}> {formik.errors.age}</p>
                 <button type = "submit">Update Profile</button>
             </form>
         </div>
