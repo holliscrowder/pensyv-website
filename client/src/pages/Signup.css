@@ -1,25 +1,23 @@
-
-
 .signup_header {
     text-align: center;
     padding: 10px 10px 10px 10px;
 }
 
 .signup {
-    text-align: center;
-    padding: 10px 4px;
+    /* text-align: left; */
+    padding: 10px 0px 10px 20px;
     background-color: rgb(246, 240, 240, 0.5);
     /* width: 20%; */
-    margin-left: 20%;
+    margin-left: 40%;
     border-radius: 8px;
-    width: min(60%, 400px);
+    width: min(30%, 200px);
 }
 
 .login_instead {
     text-align: center;
     padding: 10px 10px 10px 10px;
-    margin-left: 20%;
-    width: min(60%, 400px);
-    margin-top: 100px;
+    margin-left: 40%;
+    width: min(30%, 200px);
+    margin-top: min(30%, 100px);
 
 }

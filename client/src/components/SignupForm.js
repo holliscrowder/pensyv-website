@@ -27,6 +27,8 @@ export const SignupForm = ({user, setUser}) => {
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
         username: yup.string().required("Must enter username").max(50),
+        age: yup.number().min(0).max(130),
+        sex: yup.string(),
         password: yup.string().required("Must enter valid password"),
         passwordConfirm: yup.string().equalTo(yup.ref('password'), 'Passwords must match').required('Required')
     })
@@ -89,6 +91,39 @@ export const SignupForm = ({user, setUser}) => {
                     value = {formik.values.username}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.username}</p>
+                <label htmlFor = "age">Age</label>
+                <br />
+                <input 
+                    id = "age"
+                    name = "age"
+                    placeholder = "age (optional)"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.age}
+                />
+                <p style = {{ color: "red" }}> {formik.errors.age}</p>
+                <label htmlFor = "sex">Sex</label>
+                <br />
+                <select 
+                    id = "sex"
+                    name = "sex"
+                    placeholder = "sex (optional"
+                    onChange = {formik.handleChange}
+                    value = {formik.values.sex}
+                >
+                    <option value = "" label = "prefer not to say">
+                        prefer not to say
+                    </option>
+                    <option value = "F" label = "female">
+                        female
+                    </option>
+                    <option value = "M" label = "male">
+                        male
+                    </option>
+                    <option value = "I" label = "indeterminate">
+                        indeterminate
+                    </option>
+                </select>
+                <p style = {{ color: "red" }}> {formik.errors.age}</p>
                 <label htmlFor = "password">Password</label>
                 <br />
                 <input 

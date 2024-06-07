@@ -4,10 +4,14 @@ button {
     border-radius: 8px;
 }
 
-.signup {
-    text-align: center;
+/* .signup {
+    text-align: left;
 }
 
 input {
     text-align: left;
 }
+
+label.signup {
+    text-align: left;
+} */
