@@ -54,13 +54,13 @@ class User(db.Model, SerializerMixin):
         
     @validates("age")
     def validate_age(self, _, age):
-        if age < 0 or age > 130 or not isinstance(age, int):
+        if age and (age < 0 or age > 130 or not isinstance(age, int)):
             return ValueError("Age must be an integer between 0 and 130.")
         return age
     
     @validates("sex")
     def validate_sex(self, _, sex):
-        if sex.upper() not in ("M", "F", "I"):
+        if sex and sex.upper() not in ("M", "F", "I"):
             return ValueError("Sex must be either M, F, or I.")
         return sex.upper()
 

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import "./ProfileCard.css"
 import { useOutletContext } from "react-router-dom";
 
-function Profile() {
+function ProfileCard() {
     const [user, setUser, isLoggedIn] = useOutletContext();
 
     useEffect(() => {
@@ -24,13 +23,14 @@ function Profile() {
 
     return (
         <>
-            <div className = "profile_instructions">
-                <p><b>Current email: </b> {user.email}</p>
-                <p><b>Current username: </b> {user.username}</p>
+            <div className = "profile_card">
+                <p><b>email: </b> {user.email}</p>
+                <p><b>username: </b> {user.username}</p>
+                <p><b>age: </b> {user.age ? user.age : "age not entered"}</p>
+                <p><b>sex: </b> {user.sex ? user.sex : "sex not entered"}</p>
             </div>
-            <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
         </>
       );
 }
 
-export default Profile;
+export default ProfileCard;

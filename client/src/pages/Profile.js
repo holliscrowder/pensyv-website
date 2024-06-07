@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css"
 import { useOutletContext } from "react-router-dom";
 import {ProfileForm} from "../components/ProfileForm";
+import ProfileCard from "../components/ProfileCard";
 import { Link } from "react-router-dom";
 
 function Profile() {
@@ -31,12 +32,9 @@ if (isUpdated === false) {
         <>
             <div className = "profile_header">
                 <h2>User Profile</h2>
-                <p>You can update your user profile details at any time.</p>
             </div>
-            <div className = "profile_instructions">
-                <p><b>Current email: </b> {user.email}</p>
-                <p><b>Current username: </b> {user.username}</p>
-            </div>
+            <ProfileCard />
+            <p>You can update your user profile details at any time.</p>
             <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
         </>
       );
