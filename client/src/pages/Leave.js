@@ -11,7 +11,7 @@ function Leave() {
                 <p><b> *** NOTE ***</b></p>
                 <p><b>Your data will be permanently deleted with no recovery.</b></p>
                 <br />
-                <p>Please re-enter email and username to confirm profile removal.</p>
+                <p>Please re-enter email and password to confirm profile removal.</p>
             </div>
             <LeaveForm />
         </>

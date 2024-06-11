@@ -47,7 +47,7 @@ if (isUpdated === false) {
             <div className = "profile_body">
               <ProfileCard className = "profile_card"/>
               <br />
-              <p>You can update your user profile details and/or password at any time. </p>
+              <p>You can update your user profile details at any time. </p>
               <br />
               {showUpdateProfile ? (
                 <>
