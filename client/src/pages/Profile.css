@@ -33,10 +33,33 @@
 
 .profile_card {
     text-align: center;
-    padding: 10px 4px;
+    padding: 4px 4px 4px 4px;
     background-color: rgb(246, 240, 240, 0.5);
     width: min(80%, 300px);
     margin: auto;
     /* position: absolute; left: 40%; */
     border-radius: 8px;
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
 }
+
+.button-update-profile {
+    background-color: #dc3895;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 29px;
+    padding: 4px 10px 4px 11px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+    margin-right: 10px;
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
+}
+

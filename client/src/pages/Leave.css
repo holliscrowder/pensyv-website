@@ -3,4 +3,5 @@
     margin: auto;
     margin-top: min(36px, 20%);
     width: min(80%, 400px); 
+    padding: 2% 0 2% 0;
 }

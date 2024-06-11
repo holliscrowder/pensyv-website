@@ -6,13 +6,9 @@ import ProfileCard from "../components/ProfileCard";
 import { PasswordResetForm } from "../components/PasswordResetForm";
 import { Link } from "react-router-dom";
 
-function Profile() {
+function UpdateProfile() {
     const [user, setUser, isLoggedIn] = useOutletContext();
     const [isUpdated, setIsUpdated] = useState(false);
-    const [showUpdateProfile, setShowUpdateProfile] = useState(false);
-    const toggleShowUpdateProfile = () => {
-      setShowUpdateProfile(!showUpdateProfile);
-    };
 
     useEffect(() => {
         fetch("api/check_session")
@@ -39,33 +35,12 @@ if (isUpdated === false) {
                 <h2>User Profile</h2>
             </div>
             <div className = "profile_body">
-              <ProfileCard className = "profile_card"/>
-              <br />
-              <p>You can update your user profile details and/or password at any time. </p>
-              <br />
-
-              {showUpdateProfile ? (
-                <>
-                  <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
-                  <br />
-                  <ProfileForm />
-                </>
-                ) : (
-                  <>
-                    <Link
-                      to={`/profile/update_profile`}
-                      className="button-update-profile"
-                      onClick={toggleShowUpdateProfile}
-                    >
-                      Update Profile Details
-                    </Link>
-                    <br />
-                  </>
-                )}
-        <br />
-              <p>You can update your password at any time.</p>
-              <br />
-              <PasswordResetForm className = "reset" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+                <ProfileCard className = "profile_card"/>
+                <br />
+                <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
+                <br />
+                <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+                <br />
             </div>
         </>
       );
@@ -93,4 +68,4 @@ else if (isUpdated === true) {
   }
 }
 
-export default Profile;
+export default UpdateProfile;

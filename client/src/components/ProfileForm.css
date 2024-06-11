@@ -1,4 +1,4 @@
-button {
+button:focus {
     padding: 4px 4px;
     border: 10px transparent;
     border-radius: 8px;
@@ -9,6 +9,7 @@ button {
     background-color: rgb(246, 240, 240, 0.5);
     width: min(80%, 200px);
     border-radius: 8px;
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
 }
 
 input, select {

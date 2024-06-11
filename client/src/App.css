@@ -32,5 +32,10 @@ button {
     background-color: #dc3895;
     color: white;
     border: 0.5px solid;
-    
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
+    cursor: pointer;
+}
+
+.button:focus {
+  background-color: #f7fafa;
 }

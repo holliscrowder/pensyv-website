@@ -11,6 +11,7 @@
     margin: auto;
     border-radius: 8px;
     width: min(30%, 200px);
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
 }
 
 .login_instead {
