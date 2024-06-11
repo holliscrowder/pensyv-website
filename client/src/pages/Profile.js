@@ -9,9 +9,15 @@ import { Link } from "react-router-dom";
 function Profile() {
     const [user, setUser, isLoggedIn] = useOutletContext();
     const [isUpdated, setIsUpdated] = useState(false);
+
     const [showUpdateProfile, setShowUpdateProfile] = useState(false);
     const toggleShowUpdateProfile = () => {
       setShowUpdateProfile(!showUpdateProfile);
+    };
+
+    const [showUpdatePassword, setShowUpdatePassword] = useState(false);
+    const toggleShowUpdatePassword = () => {
+      setShowUpdatePassword(!showUpdatePassword);
     };
 
     useEffect(() => {
@@ -43,7 +49,6 @@ if (isUpdated === false) {
               <br />
               <p>You can update your user profile details and/or password at any time. </p>
               <br />
-
               {showUpdateProfile ? (
                 <>
                   <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
@@ -62,10 +67,27 @@ if (isUpdated === false) {
                     <br />
                   </>
                 )}
-        <br />
-              <p>You can update your password at any time.</p>
+            <br />
+            <p>You can update your password at any time.</p>
+              {showUpdatePassword ? (
+                <>
+                  <br />
+                  <PasswordResetForm className = "reset" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+                </>
+                ) : (
+                  <>
+                    <br />
+                    <Link
+                      to={`/profile/update_password`}
+                      className="button-update-profile"
+                      onClick={toggleShowUpdatePassword}
+                    >
+                      Update Password
+                    </Link>
+                    <br />
+                  </>
+                )}
               <br />
-              <PasswordResetForm className = "reset" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
             </div>
         </>
       );

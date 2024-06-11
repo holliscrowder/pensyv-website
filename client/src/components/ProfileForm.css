@@ -5,7 +5,7 @@ button:focus {
 }
 
 .profile {
-    text-align: left;
+    text-align: center;
     background-color: rgb(246, 240, 240, 0.5);
     width: min(80%, 200px);
     border-radius: 8px;
@@ -13,7 +13,7 @@ button:focus {
 }
 
 input, select {
-    text-align: left;
+    text-align: center;
     border-radius: 4px;
 }
 
