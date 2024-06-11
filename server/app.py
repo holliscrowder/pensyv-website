@@ -121,6 +121,7 @@ class Users(Resource):
             return make_response({"error": "User not found"}, 404)
         
         user_data = request.get_json()
+        print(user_data)
         try:
             # update user info
             if user_data.get("email"):
@@ -131,6 +132,11 @@ class Users(Resource):
                 user.age = user_data.get("age")
             if user_data.get("sex"):
                 user.sex = user_data.get("sex")
+            if user_data.get("currentPassword") and user_data.get("newPassword"):
+                check_current_password = user_data.get("currentPassword")
+                if user.authenticate(check_current_password):
+                    user.password_hash = user_data.get("newPassword")
+
             db.session.add(user)
             db.session.commit()
             user_response = jsonify(user.to_dict())

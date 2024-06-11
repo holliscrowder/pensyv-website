@@ -3,6 +3,7 @@ import "./Profile.css"
 import { useOutletContext } from "react-router-dom";
 import {ProfileForm} from "../components/ProfileForm";
 import ProfileCard from "../components/ProfileCard";
+import { PasswordResetForm } from "../components/PasswordResetForm";
 import { Link } from "react-router-dom";
 
 function Profile() {
@@ -38,11 +39,14 @@ if (isUpdated === false) {
               <br />
               <p>You can update your user profile details at any time. </p>
               <br />
-              <p>If you wish to leave a characteristic as-is, </p>
-              <p>simply leave that field blank, or select "prefer not to say", as appropriate</p>
+              <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
               <br />
+              <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+              <br />
+              <p>You can update your password at any time.</p>
+              <br />
+              <PasswordResetForm className = "reset" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
             </div>
-            <ProfileForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
         </>
       );
     }

@@ -27,6 +27,8 @@
 
 .profile_body {
     text-align: center;
+    width: min(80%, 400px);
+    margin: auto;
 }
 
 .profile_card {
