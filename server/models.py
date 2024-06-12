@@ -68,7 +68,7 @@ class User(db.Model, SerializerMixin):
     serialize_rules = ("-submissions",)
 
     def __repr__(self):
-        return f"<User {self.id}: [username] {self.username} [email] {self.email} >"
+        return f"<User {self.id}: [username] {self.username} [email] {self.email} [age] {self.age} [sex] {self.sex} >"
 
 class Question(db.Model, SerializerMixin):
     __tablename__ = "questions"
@@ -98,16 +98,16 @@ class Questionnaire(db.Model, SerializerMixin):
     # updated_on = db.Column(db.DateTime(), server_default = db.func.now(), server_onupdate = db.func.now())
 
     # relationships
-    user = association_proxy("Questionnaire", "submission")
     question = db.relationship("Question", back_populates = "questionnaires")
     submission = db.relationship("Submission", back_populates = "questionnaires")
+    user = association_proxy("submission", "user")
 
     # serialization rules
     serialize_rules = ("-user", "-question", "-submission")
     # serialize_rules = ("-user",)
 
     def __repr__(self):
-        return f"<Questionnaire {self.id}: [user_id] {self.user_id} [question_id] {self.question_id} [score] {self.score} >"
+        return f"<Questionnaire {self.id}: [question_id] {self.question_id} [score] {self.score}[submission] {self.submission} >"
 
 class Submission(db.Model, SerializerMixin):
     __tablename__ = "submissions"
