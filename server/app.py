@@ -40,7 +40,7 @@ class Signup(Resource):
                     username = json.get("username"),
                     email = json.get("email")
                 )
-                user.age = json.get("age")
+                user.age = int(json.get("age"))
                 user.sex = json.get("sex")
                 user.password_hash = json.get("password")
 
