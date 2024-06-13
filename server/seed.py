@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
-from random import randint, choice as rc
+from random import choice
 
 # Remote library imports
 from faker import Faker
@@ -9,8 +9,9 @@ from faker import Faker
 # Local imports
 from app import app
 from models import db, User, Question, Questionnaire, Submission
-from random import randint, choice
 from faker import Faker
+import random
+import time
 
 fake = Faker()
 
@@ -61,30 +62,15 @@ if __name__ == '__main__':
 
         # create 100 blank (empty) submissions
         num_submissions = 100
-        submissions1 = [0] * num_submissions
-        submissions2 = [0] * num_submissions
-        submissions3 = [0] * num_submissions
+        submissions1 = []
+        submissions2 = []
+        submissions3 = []
 
         # create 100 submissions for each user, with 5% probability of checked = true
         for i in range(num_submissions):
-            submissions1[i] = Submission( user = user1, checked = fake.pybool(truth_probability=5) )
-            submissions2[i] = Submission( user = user2, checked = fake.pybool(truth_probability=5) )
-            submissions3[i] = Submission( user = user3, checked = fake.pybool(truth_probability=5) )
-
-        # # submission 1 - user 1
-        # submission1 = Submission(
-        #     user = user1
-        # )
-
-        # # submission 2 - user 2
-        # submission2 = Submission(
-        #     user = user2
-        # )
-
-        # # submission 3 - user 3
-        # submission3 = Submission(
-        #     user = user3
-        # )
+            submissions1.append( Submission( user = user1, checked = fake.pybool(truth_probability=5) ) )
+            submissions2.append( Submission( user = user2, checked = fake.pybool(truth_probability=5) ) )
+            submissions3.append( Submission( user = user3, checked = fake.pybool(truth_probability=5) ) )
 
         # submissions = [submission1, submission2, submission3]
         db.session.add_all(submissions1)
@@ -148,6 +134,42 @@ if __name__ == '__main__':
         db.session.add_all(questionnaires1)
         db.session.add_all(questionnaires2)
         db.session.add_all(questionnaires3)
+        db.session.commit()
+
+        # create new mock date-times to overwrite 'created_on' submission attribute
+        def str_time_prop(start, end, time_format, prop):
+            """Get a time at a proportion of a range of two formatted times.
+
+            start and end should be strings specifying times formatted in the
+            given format (strftime-style), giving an interval [start, end].
+            prop specifies how a proportion of the interval to be taken after
+            start.  The returned time will be in the specified format.
+            """
+
+            stime = time.mktime(time.strptime(start, time_format))
+            etime = time.mktime(time.strptime(end, time_format))
+
+            ptime = stime + prop * (etime - stime)
+
+            return time.strftime(time_format, time.localtime(ptime))
+
+
+        def random_date(start, end, prop):
+            return str_time_prop(start, end, '%Y-%m-%d  %H:%M:%S', prop)
+        
+        # user 1 submissions
+        for submission in submissions1:
+            submission.created_on = random_date("2024-01-12 11:23:08", "2024-06-12 11:23:08", random.random())
+
+        for submission in submissions2:
+            submission.created_on = random_date("2024-01-12 11:23:08", "2024-06-12 11:23:08", random.random())
+        
+        for submission in submissions3:
+            submission.created_on = random_date("2024-01-12 11:23:08", "2024-06-12 11:23:08", random.random())
+            
+        db.session.add_all(submissions1)
+        db.session.add_all(submissions2)
+        db.session.add_all(submissions3)
         db.session.commit()
 
         print("Seeding complete!")
