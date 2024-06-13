@@ -206,6 +206,25 @@ class Questionnaires(Resource):
         except IntegrityError as e:
             print(e)
             return make_response({"error": "Database relational integrity error"}, 422)
+        
+    def get(self):
+        if not session.get("user_id"):
+            return make_response({"error": "Not authorized."}, 401)
+        
+        # create questionnaires array of all available questionnaires for the user
+        user = User.query.filter(User.id == session.get("user_id")).first()
+        questionnaires = user.questionnaires
+
+        # questionnaires = [questionnaire.to_dict() for questionnaire in Questionnaire.query.filter(User.id == session["user_id"])]
+
+        # format for JSON response
+        if questionnaires:
+            questionnaires_response = jsonify([[questionnaire.to_dict(rules=("submission.created_on","-submission.questionnaires", "-submission.user_id", "-submission.id", "-submission.updated_on")) for questionnaire in group ] for group in questionnaires])
+            return make_response(questionnaires_response, 200)
+        else:
+            return make_response({"error": "No content found for user id"}, 401)
+        
+
 
 api.add_resource(Signup, "/api/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/api/check_session", endpoint = "check_session")

@@ -34,7 +34,7 @@ class User(db.Model, SerializerMixin):
 
     # relationships
     submissions = db.relationship("Submission", back_populates = "user", cascade = "all, delete")
-    questionnaires = association_proxy("User", "submissions")
+    questionnaires = association_proxy("submissions", "questionnaires")
 
     # validations
     @validates("username")
