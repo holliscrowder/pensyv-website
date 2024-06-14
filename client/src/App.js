@@ -9,6 +9,7 @@ function App() {
   const isLoggedIn = !!user
   const navigate = useNavigate();
 
+  // check session and assign user, if any
   useEffect(() => {
     fetch("api/check_session")
       .then((response) => {
@@ -25,6 +26,17 @@ function App() {
       .catch(e => {
       });
   }, []);
+
+  // grab questions
+  const [questions, setQuestions] = useState("")
+
+  useEffect(() => {
+      fetch("api/questions")
+        .then((r) => r.json())
+        .then((data) => {
+          setQuestions(data);
+        });
+    }, []);
 
   function handleLogout() {
     fetch("api/logout", {
@@ -56,7 +68,8 @@ return (
             user,
             setUser,
             isLoggedIn,
-            handleLogout
+            handleLogout,
+            questions
           ]}
         />
       </main>

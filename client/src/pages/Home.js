@@ -5,7 +5,7 @@ import Chart from "../components/Chart.js";
 import { useOutletContext } from "react-router-dom";
 
 function Home() {
-  const [user, setUser, isLoggedIn] = useOutletContext();
+  const [user, setUser, isLoggedIn, handleLogout, questions] = useOutletContext();
   const [submissions, setSubmissions] = useState("")
 
   useEffect(() => {
@@ -25,13 +25,35 @@ function Home() {
     });
 }, []);
 
-  // let allScores = []
-  // let chartData = []
-  // let labels = []
-
   if (isLoggedIn && submissions) {
+
+
+
+//     const submissions_by_question = questions.foreach((question) => {
+//       submissions.filter((submission) => (submission.question_id === question.id))
+//   }
+// )
+    
+    // submissions.filter((submission) => {submission.question_id == questions[0].id})
+  const submissions_flat = submissions.flat().map(submission => (
+      {
+      "id": submission.id,
+      "question_id": submission.question_id,
+      "score": submission.score,
+      "checked": submission.submission.checked,
+      "created_on": submission.submission.created_on,
+      "submission_id": submission.submission_id
+    }
+  ))
+
+  const submissions_q1 = submissions_flat.filter((submission) => (submission.question_id === questions[0].id))
+  console.log(submissions_q1)
+  console.log(questions[0].id)
+  console.log(submissions_flat[0])
+
+
     const allScores = submissions.flat().map(questionnaire => ({"id": String(questionnaire.id), "score": questionnaire.score}))
-    console.log(allScores)
+    // console.log(allScores)
     // const labels = allScores.map(myScore => String(myScore.id));
     // console.log(labels)
     // const chartData = {

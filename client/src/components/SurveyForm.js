@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./SurveyForm.css";
+import { useOutletContext } from "react-router-dom";
 
 export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
-    const [questions, setQuestions] = useState("")
-
-    useEffect(() => {
-        fetch("api/questions")
-          .then((r) => r.json())
-          .then((data) => {
-            setQuestions(data);
-          });
-      }, []);
+    const [user, setUser, isLoggedIn, handleLogout, questions] = useOutletContext();
 
     const formSchema = yup.object().shape({
         question1: yup.number().required("Must enter valid score between (0-4)").min(0).max(4),
