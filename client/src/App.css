@@ -36,6 +36,6 @@ button {
     cursor: pointer;
 }
 
-.button:focus {
+.button:hover {
   background-color: #f7fafa;
 }

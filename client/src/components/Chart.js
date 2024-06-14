@@ -1,36 +1,68 @@
 import React, {useState} from "react";
 // import { Line } from "react-chartjs-2";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from "recharts";
+import "./Chart.css";
 
 export default function Chart({allScores}) {
-    // console.log(allScores)
-    // const allScores = [
-    //     {id: 1, score: 2},
-    //     {id: 2, score: 1},
-    //     {id: 3, score: 4}
-    // ]
 
     return (
 
-    <div style={{width:"100%", height:"100%", backgroundColor: "whitesmoke"}}>
+    <div style={{width:"80%", height:"100%", backgroundColor: "whitesmoke"}}>
         <ResponsiveContainer width={"100%"} aspect={4} >
             <LineChart
+            label={"Question 1"}
             width={500}
             height={300}
             data={allScores}
             margin={{
                 top: 5,
-                right: 30,
-                left: 20,
+                right: 10,
+                left: 10,
                 bottom: 5,
             }}
             >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="id" />
-            <YAxis />
+            dataKey = 'time'
+        
+        
+        
+        type = 'number'
+            <XAxis dataKey="created_on" tickFormatter={(timestamp) => new Date(timestamp).toLocaleDateString()} domain = {['auto', 'auto']} name = "Time" className = "x-axis">
+                <Label 
+                        style={{
+                            textAnchor: "middle",
+                            fontSize: "130%",
+                            fill: "black"
+                            }} 
+                        value={"Time"} 
+                    />
+            </XAxis>
+            <YAxis domain = {[0, 4]}>
+                <Label 
+                    style={{
+                        textAnchor: "middle",
+                        fontSize: "130%",
+                        fill: "black",
+                        }}
+                    angle={270} 
+                    value={"Score"} 
+                />
+                
+            </YAxis>
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ r: 8 }} />
+            {/* <Line label = "Question 1" type="monotone" dataKey="Q1" stroke="#dc3895" activeDot={{ r: 8 }}>Question 1
+            </Line>
+            <Line label = "Question 2" type="monotone" dataKey="Q2" stroke="#fe6b41" activeDot={{ r: 8 }}>Question 2
+            </Line>
+            <Line label = "Question 3" type="monotone" dataKey="Q3" stroke="#6c1a48" activeDot={{ r: 8 }}>Question 3
+            </Line>
+            <Line label = "Question 4" type="monotone" dataKey="Q4" stroke="#97290a" activeDot={{ r: 8 }}>Question 4
+            </Line>
+            <Line label = "Question 5" type="monotone" dataKey="Q5" stroke="#feabda" activeDot={{ r: 8 }}>Question 5
+            </Line> */}
+            <Line label = "Avg" type="monotone" dataKey="average" stroke="#feabda" activeDot={{ r: 8 }}>Avg
+            </Line>
             </LineChart>
         </ResponsiveContainer>
      </div>
