@@ -2,19 +2,30 @@ import React, {useState} from "react";
 // import { Line } from "react-chartjs-2";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from "recharts";
 import "./Chart.css";
+import moment from "moment";
 
 export default function Chart({allScores, dates, chartQuestion}) {
-    const today = new Date();
-    console.log(today);
+
+    const questionLabel = {
+        "Q1": "Question 1",
+        "Q2": "Question 2",
+        "Q3": "Question 3",
+        "Q4": "Question 4",
+        "Q5": "Question 5",
+        "average": "Average"
+    }
+    // filter chart data based on question
+
+
     return (
 
     <div className = "chart_container">
-        <ResponsiveContainer width = "100%" aspect={4}>
+        <ResponsiveContainer width = "100%" aspect={3}>
             <LineChart
             className = "chart"
             label={"Chart"}
             width={500}
-            height={300}
+            height={400}
             data={allScores}
             margin={{
                 top: 5,
@@ -40,17 +51,7 @@ export default function Chart({allScores, dates, chartQuestion}) {
             </YAxis>
             <Tooltip />
             <Legend />
-            {/* <Line label = "Question 1" type="monotone" dataKey="Q1" stroke="#dc3895" activeDot={{ r: 8 }}>Question 1
-            </Line>
-            <Line label = "Question 2" type="monotone" dataKey="Q2" stroke="#fe6b41" activeDot={{ r: 8 }}>Question 2
-            </Line>
-            <Line label = "Question 3" type="monotone" dataKey="Q3" stroke="#6c1a48" activeDot={{ r: 8 }}>Question 3
-            </Line>
-            <Line label = "Question 4" type="monotone" dataKey="Q4" stroke="#97290a" activeDot={{ r: 8 }}>Question 4
-            </Line>
-            <Line label = "Question 5" type="monotone" dataKey="Q5" stroke="#feabda" activeDot={{ r: 8 }}>Question 5
-            </Line> */}
-            <Line label = "Avg" type="monotone" dataKey="average" stroke="#feabda" activeDot={{ r: 8 }}>Avg
+            <Line name = {questionLabel[chartQuestion]} type="monotone" dataKey={chartQuestion} stroke="#dc3895" activeDot={{ r: 8 }}>{questionLabel[chartQuestion]}
             </Line>
             </LineChart>
         </ResponsiveContainer>

@@ -18,19 +18,19 @@ export default function QuestionSelector ( {chartQuestion, setChartQuestion}) {
                 <option value = "average" label = "Average">
                     Average
                 </option>
-                <option value = "Q0" label = "Question 1">
+                <option value = "Q1" label = "Question 1">
                     Question 1
                 </option>
-                <option value = "Q1" label = "Question 2">
+                <option value = "Q2" label = "Question 2">
                     Question 2
                 </option>
-                <option value = "Q2" label = "Question 3">
+                <option value = "Q3" label = "Question 3">
                     Question 3
                 </option>
-                <option value = "Q3" label = "Question 4">
+                <option value = "Q4" label = "Question 4">
                     Question 4
                 </option>
-                <option value = "Q4" label = "Question 5">
+                <option value = "Q5" label = "Question 5">
                     Question 5
                 </option>
 
