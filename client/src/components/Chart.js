@@ -29,14 +29,6 @@ export default function Chart({allScores}) {
         
         type = 'number'
             <XAxis dataKey="created_on" tickFormatter={(timestamp) => new Date(timestamp).toLocaleDateString()} domain = {['auto', 'auto']} name = "Time" className = "x-axis">
-                <Label 
-                        style={{
-                            textAnchor: "middle",
-                            fontSize: "130%",
-                            fill: "black"
-                            }} 
-                        value={"Time"} 
-                    />
             </XAxis>
             <YAxis domain = {[0, 4]}>
                 <Label 
