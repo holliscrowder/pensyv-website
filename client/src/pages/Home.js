@@ -3,6 +3,8 @@ import "./Home.css";
 import Mission from "../components/Mission.js";
 import Chart from "../components/Chart.js";
 import { useOutletContext } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 function Home() {
   const [user, setUser, isLoggedIn, handleLogout, questions] = useOutletContext();
@@ -24,6 +26,18 @@ function Home() {
       console.log(e)
     });
 }, []);
+
+const formSchema = yup.object().shape({
+  dateRange: yup.string(),
+})
+
+const formik = useFormik({
+  initialValues: {
+      dateRange: ""
+  },
+  validationSchema: formSchema,
+});
+
 
   if (isLoggedIn && submissions) {
    // flatten submissions data 
@@ -49,7 +63,7 @@ function Home() {
 
   // for (let i = 0, i < )
   // console.log(submissions_q0.length)
-
+  // create 
   for (let i = 0; i < submissions_q0.length; i++) {
     let scores = [submissions_q0[i].score, submissions_q1[i].score, submissions_q2[i].score, submissions_q3[i].score, submissions_q4[i].score]
     let scores_avg = scores.reduce((a, b) => a + b)/scores.length;
@@ -68,46 +82,38 @@ function Home() {
 
   chartData.sort((a,b) => new Date(a.created_on) - new Date(b.created_on));
 
-  console.log(chartData[0], chartData[1])
-
-//   const new_data = submissions_q0.foreach(function(submission_q0) {
-//     const index = submission_q0.index();
-//     return {
-//     "id": submission_q0.submission_id,
-//     "created_on": submission_q0.created_on,
-//     "Q1": submission_q0.score,
-//     "Q2": submissions_q1[index].score,
-//     "Q3": submissions_q2[index].score,
-//     "Q4": submissions_q3[index].score,
-//     "Q5": submissions_q4[index].score
-//   }
-// })
-
-  // console.log(chartData[0])
-    // const allScores = submissions.flat().map(questionnaire => ({"id": String(questionnaire.id), "score": questionnaire.score}))
-    // console.log(allScores)
-    // const labels = allScores.map(myScore => String(myScore.id));
-    // console.log(labels)
-    // const chartData = {
-    //   labels: labels,
-    //   datasets: [{
-    //     label: "Survey Scores Over Time",
-    //     data: allScores.map(myScore => myScore.score),
-    //     backgroundColor: [
-    //       "rgba(75,192,192,1)",
-    //       "#ecf0f1",
-    //       "#50AF95",
-    //       "#f3ba2f",
-    //       "#2a71d0"
-    //     ],
-    //     borderColor: "black",
-    //     borderWidth: 2
-    //   }]
-    // }
-  
-  
-
     return (<>
+                <div className = "chart">
+                <form>
+                    <label htmlFor = "dateRange">Select Date Range</label>
+                    <br />
+                    <select 
+                        id = "dateRange"
+                        name = "dateRange"
+                        placeholder = "Date Range"
+                        onChange = {formik.handleChange}
+                        value = {formik.values.dateRange}
+                    >
+                        <option value = "oneMonth" label = "30 Days">
+                            30 Days
+                        </option>
+                        <option value = "threeMonths" label = "90 Days">
+                            90 Days
+                        </option>
+                        <option value = "oneYear" label = "1 Year">
+                            One Year
+                        </option>
+                        <option value = "allTime" label = "All Time">
+                            All Time
+                        </option>
+                    </select>
+                    <p style = {{ color: "red" }}> {formik.errors.dateRange}</p>
+                    <br />
+                    {/* <button type = "submit">Update Profile</button> */}
+                </form>
+                <br />
+            </div>
+
      <Chart allScores = {chartData}/> 
       </>
       );

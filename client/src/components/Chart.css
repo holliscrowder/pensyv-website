@@ -1,3 +1,13 @@
 .x-axis {
     margin-top: 100px;
 }
+
+.chart_container {
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 8px;
+    padding: 10px 4px 10px 4px;
+    width: max(80%, 600px);
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
+    background-color: white;
+}

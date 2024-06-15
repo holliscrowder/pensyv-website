@@ -79,7 +79,7 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                     <select 
                         id = "sex"
                         name = "sex"
-                        placeholder = "sex (optional"
+                        placeholder = "sex (optional)"
                         onChange = {formik.handleChange}
                         value = {formik.values.sex}
                     >

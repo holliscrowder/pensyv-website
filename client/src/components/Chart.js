@@ -7,9 +7,10 @@ export default function Chart({allScores}) {
 
     return (
 
-    <div style={{width:"80%", height:"100%", backgroundColor: "whitesmoke"}}>
-        <ResponsiveContainer width={"100%"} aspect={4} >
+    <div className = "chart_container">
+        <ResponsiveContainer width = "100%" aspect={4}>
             <LineChart
+            className = "chart"
             label={"Question 1"}
             width={500}
             height={300}
@@ -65,6 +66,6 @@ export default function Chart({allScores}) {
             </Line>
             </LineChart>
         </ResponsiveContainer>
-     </div>
+        </div>
     )
 }
