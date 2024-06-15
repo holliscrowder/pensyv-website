@@ -3,8 +3,9 @@ import React, {useState} from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from "recharts";
 import "./Chart.css";
 
-export default function Chart({allScores}) {
-
+export default function Chart({allScores, dates, chartQuestion}) {
+    const today = new Date();
+    console.log(today);
     return (
 
     <div className = "chart_container">

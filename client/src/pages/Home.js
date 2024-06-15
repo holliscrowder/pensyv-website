@@ -79,7 +79,7 @@ function Home() {
           <br />
           <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} className = "selector"/>
           <br />
-          <Chart allScores = {chartData}/> 
+          <Chart allScores = {chartData} dates = {dates} chartQuestion = {chartQuestion}/> 
         </div>
       </>
     );
