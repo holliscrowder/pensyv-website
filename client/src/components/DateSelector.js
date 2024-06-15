@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-export default function ( {dates, setDates}) {
+export default function DateSelector ( {dates, setDates}) {
 
 
     return (

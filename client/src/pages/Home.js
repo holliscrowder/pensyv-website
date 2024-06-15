@@ -6,12 +6,13 @@ import DateSelector from "../components/DateSelector.js";
 import { useOutletContext } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import QuestionSelector from "../components/QuestionSelector.js";
 
 function Home() {
   const [user, setUser, isLoggedIn, handleLogout, questions] = useOutletContext();
   const [submissions, setSubmissions] = useState("");
   const [dates, setDates] = useState("oneMonth");
-  const [chartQuestions, setChartQuestions] = useState("average")
+  const [chartQuestion, setChartQuestion] = useState("average")
 
   useEffect(() => {
     fetch("api/questionnaires")
@@ -73,8 +74,13 @@ function Home() {
 
     return (
       <>
-        <DateSelector dates = {dates} setDates = {setDates} />
-        <Chart allScores = {chartData}/> 
+        <div className = "chartHome">
+          <DateSelector dates = {dates} setDates = {setDates} className = "selector"/>
+          <br />
+          <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} className = "selector"/>
+          <br />
+          <Chart allScores = {chartData}/> 
+        </div>
       </>
     );
   }
