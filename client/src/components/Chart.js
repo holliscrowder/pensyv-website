@@ -11,7 +11,7 @@ export default function Chart({allScores}) {
         <ResponsiveContainer width = "100%" aspect={4}>
             <LineChart
             className = "chart"
-            label={"Question 1"}
+            label={"Chart"}
             width={500}
             height={300}
             data={allScores}
@@ -22,12 +22,7 @@ export default function Chart({allScores}) {
                 bottom: 5,
             }}
             >
-            <CartesianGrid strokeDasharray="3 3" />
-            dataKey = 'time'
-        
-        
-        
-        type = 'number'
+            <CartesianGrid />
             <XAxis dataKey="created_on" tickFormatter={(timestamp) => new Date(timestamp).toLocaleDateString()} domain = {['auto', 'auto']} name = "Time" className = "x-axis">
             </XAxis>
             <YAxis domain = {[0, 4]}>
@@ -38,7 +33,7 @@ export default function Chart({allScores}) {
                         fill: "black",
                         }}
                     angle={270} 
-                    value={"Score"} 
+                    value={"score"} 
                 />
                 
             </YAxis>
