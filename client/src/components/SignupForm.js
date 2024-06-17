@@ -9,7 +9,7 @@ export const SignupForm = ({user, setUser}) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     /* add password confirm function */
-    function equalTo(ref: any, msg: any) {
+    function equalTo(ref, msg) {
         return yup.mixed().test({
           name: 'equalTo',
           exclusive: false,
@@ -17,7 +17,7 @@ export const SignupForm = ({user, setUser}) => {
           params: {
             reference: ref.path,
           },
-          test: function(value: any) {
+          test: function(value) {
             return value === this.resolve(ref);
           },
         });
@@ -144,7 +144,7 @@ export const SignupForm = ({user, setUser}) => {
                     onChange = {formik.handleChange}
                     value = {formik.values.passwordConfirm}
                     onBlur={formik.handleBlur}
-                    secureTextEntry
+                    // secureTextEntry
                 />
                 <p style = {{ color: "red" }}> {formik.errors.passwordConfirm}</p>
                 <button type = "submit">Sign Up</button>

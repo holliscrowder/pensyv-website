@@ -59,7 +59,8 @@ function Home() {
     let scores_avg = scores.reduce((a, b) => a + b)/scores.length;
     chartData.push({
       "id": submissions_q0[i].submission_id,
-      "created_on": submissions_q0[i].created_on.substring(0,10),
+      "created_on_str": submissions_q0[i].created_on.substring(0,10),
+      "created_on_date": new Date(submissions_q0[i].created_on.substring(0,10)),
       "checked": submissions_q0[i].checked,
       "Q1": scores[0],
       "Q2": scores[1],
@@ -70,7 +71,34 @@ function Home() {
     })
   };
 
-  chartData.sort((a,b) => new Date(a.created_on) - new Date(b.created_on));
+  // subtract selected days from current date
+  Date.prototype.subtractDays = function (days) {
+    this.setTime(this.getTime() - (days * 24 * 60 * 60 * 1000));
+    return this;
+  }
+
+  let dateFilter = new Date();
+  if (dates === "oneMonth"){
+    dateFilter.subtractDays(30);
+  }
+  else if (dates === "threeMonths"){
+    dateFilter.subtractDays(90);
+  }
+  else if (dates === "oneYear"){
+    dateFilter.subtractDays(365);
+  }
+  else {
+    dateFilter.subtractDays(10000);
+  }
+
+  // filter chart data to only display selected dates
+  const filteredChartData = chartData.filter((data) => (new Date(data.created_on_date) >= new Date(dateFilter)));
+  // console.log(chartData);
+  console.log(dates)
+  console.log(dateFilter)
+  console.log(filteredChartData)
+
+  filteredChartData.sort((a,b) => new Date(a.created_on) - new Date(b.created_on));
 
     return (
       <>
@@ -79,7 +107,7 @@ function Home() {
           <br />
           <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} className = "selector"/>
           <br />
-          <Chart allScores = {chartData} dates = {dates} chartQuestion = {chartQuestion}/> 
+          <Chart allScores = {filteredChartData} dates = {dates} chartQuestion = {chartQuestion}/> 
         </div>
       </>
     );

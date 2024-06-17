@@ -10,7 +10,7 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     /* add password confirm function */
-    function equalTo(ref: any, msg: any) {
+    function equalTo(ref, msg) {
         return yup.mixed().test({
           name: 'equalTo',
           exclusive: false,
@@ -18,7 +18,7 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
           params: {
             reference: ref.path,
           },
-          test: function(value: any) {
+          test: function(value) {
             return value === this.resolve(ref);
           },
         });
@@ -100,7 +100,7 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                         onChange = {formik.handleChange}
                         value = {formik.values.passwordConfirm}
                         onBlur={formik.handleBlur}
-                        secureTextEntry
+                        // secureTextEntry
                     />
                     <p style = {{ color: "red" }}> {formik.errors.newPasswordConfirm}</p>
                     <button type = "submit">Update Password</button>
