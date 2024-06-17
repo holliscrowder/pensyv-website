@@ -49,58 +49,28 @@ if (isUpdated === false) {
               <br />
               <p>You can update your user profile details at any time. </p>
               <br />
-              {showUpdateProfile ? (
-                <>
-                  <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
-                  <br />
-                  <ProfileForm />
-                </>
-                ) : (
-                  <>
-                    <Link
-                      to={`/profile/update_profile`}
-                      className="button-update-profile"
-                      onClick={toggleShowUpdateProfile}
-                    >
-                      Update Profile Details
-                    </Link>
-                    <br />
-                  </>
-                )}
-            <br />
-            <p>You can update your password at any time.</p>
-              {showUpdatePassword ? (
-                <>
-                  <br />
-                  <PasswordResetForm className = "reset" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
-                </>
-                ) : (
-                  <>
-                    <br />
-                    <Link
-                      to={`/profile/update_password`}
-                      className="button-update-profile"
-                      onClick={toggleShowUpdatePassword}
-                    >
-                      Update Password
-                    </Link>
-                    <br />
-                  </>
-                )}
+              <Link
+                to={`/profile/update_profile`}
+                className="button-update-profile"
+                onClick={toggleShowUpdateProfile}
+              >
+                Update Profile Details
+              </Link>
+              <br />
+              <br />
+              <p>You can update your password at any time.</p>
+              <br />
+              <Link
+                to={`/profile/update_password`}
+                className="button-update-profile"
+                onClick={toggleShowUpdatePassword}
+              >
+                Update Password
+              </Link>
               <br />
             </div>
         </>
       );
-    }
-else if (isUpdated === true) {
-        return (
-            <div className = "updated">
-                <p>Profile Updated! What would you like to do next?</p>
-                <Link to="/" className = "button-update-profile">Home</Link> 
-                <br />
-                {/* <Link to="/survey" className = "button-update-profile">Survey</Link>   */}
-            </div>    
-            )
     }
   else if (!user) {
     return (

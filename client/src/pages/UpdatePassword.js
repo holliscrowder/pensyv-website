@@ -36,7 +36,7 @@ if (isUpdated === false) {
             <div className = "profile_body">
                 <ProfileCard className = "profile_card"/>
                 <br />
-                <p>If you wish to leave a characteristic as-is, simply leave that field blank, or select "prefer not to say".</p>
+                <p>Enter your current password, then enter and confirm your new password.</p>
                 <br />
                 <PasswordResetForm className = "profile" user={user} setUser={setUser} isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
                 <br />
@@ -48,12 +48,11 @@ else if (isUpdated === true) {
         return (
             <div className = "updated">
                 <p>Profile Updated! What would you like to do next?</p>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>  
-                <li>
-                    <Link to="/survey">Survey</Link> 
-                </li>  
+                <br />
+                    <Link to={"/"} className = "button-update-profile">Home</Link>
+                    <br />
+                    <br />
+                    <Link to={"/survey"} className = "button-update-profile">Survey</Link>  
             </div>    
             )
     }

@@ -49,12 +49,11 @@ else if (isUpdated === true) {
         return (
             <div className = "updated">
                 <p>Profile Updated! What would you like to do next?</p>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>  
-                <li>
-                    <Link to="/survey">Survey</Link> 
-                </li>  
+                    <br />
+                    <Link to={"/"} className = "button-update-profile">Home</Link>
+                    <br />
+                    <br />
+                    <Link to={"/survey"} className = "button-update-profile">Survey</Link> 
             </div>    
             )
     }

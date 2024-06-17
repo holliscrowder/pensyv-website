@@ -110,11 +110,11 @@ function Home() {
           <br />
           {chartQuestion === "average" ? 
             (
-              <div className = "questionDisplayAverage">
+              <div className = "question-display">
                 <p>Average score across all questions:</p>
                 <br />
                 {questions.map((question, index) => (
-                  <div>
+                  <div key = {index}>
                     <p><b>Question {String(index+1)}:</b> {question.question_text}</p>
                     <br />
                   </div>
@@ -123,7 +123,7 @@ function Home() {
             )
           :
           (
-            <div>
+            <div className = "question-display">
               <p><b>Question {chartQuestion.substring(1)}:</b> {questions[Number(chartQuestion.substring(1) - 1)].question_text}</p>
 
             </div>

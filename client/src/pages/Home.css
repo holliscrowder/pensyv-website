@@ -14,10 +14,14 @@
     text-align: center;
 }
 
-.questionDisplayAverage {
+.question-display {
     text-align: left;
-    width: min(80%, 700px);
+    width: min(80%, 600px);
     margin: auto;
+    background-color: rgb(246, 240, 240, 0.5);
+    padding: 10px 4px;
+    box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
+    border-radius: 8px;
 }
 
 .selectors {

@@ -36,7 +36,6 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                 }
 
             }).then((data) => {
-                console.log(data);
                 setUser(data);
                 setIsUpdated(true)
             });

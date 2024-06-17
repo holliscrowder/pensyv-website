@@ -59,12 +59,11 @@ function Survey() {
             return (
                 <div className = "submitted">
                     <p>Survey Submitted! What would you like to do next?</p>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>  
-                    <li>
-                        <Link to="/profile">User Profile</Link> 
-                    </li> 
+                    <br />
+                    <Link to={"/"} className = "button-update-profile">Home</Link>
+                    <br />
+                    <br />
+                    <Link to={"/profile"} className = "button-update-profile">Profile</Link> 
                 </div>    
                 )
         }
