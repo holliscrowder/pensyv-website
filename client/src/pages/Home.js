@@ -15,7 +15,7 @@ function Home() {
   const [chartQuestion, setChartQuestion] = useState("average")
 
   useEffect(() => {
-    fetch("api/questionnaires")
+    fetch("/api/questionnaires")
     .then((response) => {
       if (response.status === 200) {  
         return response.json()
@@ -100,10 +100,12 @@ function Home() {
     return (
       <>
         <div className = "chartHome">
-          <DateSelector dates = {dates} setDates = {setDates} className = "selector"/>
-          <br />
-          <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} className = "selector"/>
-          <br />
+          <ul className = "selectors">
+            <DateSelector dates = {dates} setDates = {setDates} />
+            <br />
+            <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} />
+            <br />
+          </ul>
           <Chart allScores = {sortedFilteredChartData} dates = {dates} chartQuestion = {chartQuestion}/> 
           <br />
           {chartQuestion === "average" ? 

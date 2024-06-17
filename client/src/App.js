@@ -11,7 +11,7 @@ function App() {
 
   // check session and assign user, if any
   useEffect(() => {
-    fetch("api/check_session")
+    fetch("/api/check_session")
       .then((response) => {
         if (response.status == 200) {  
           return response.json()
@@ -31,7 +31,7 @@ function App() {
   const [questions, setQuestions] = useState("")
 
   useEffect(() => {
-      fetch("api/questions")
+      fetch("/api/questions")
         .then((r) => r.json())
         .then((data) => {
           setQuestions(data);
@@ -39,7 +39,7 @@ function App() {
     }, []);
 
   function handleLogout() {
-    fetch("api/logout", {
+    fetch("/api/logout", {
       method: "DELETE",
       headers: {
           "Content-type": "application/json"

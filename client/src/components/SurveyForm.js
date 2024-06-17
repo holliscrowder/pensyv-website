@@ -29,7 +29,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
         validationSchema: formSchema,
         onSubmit: 
             (values) => {
-                fetch("api/questionnaires", {
+                fetch("/api/questionnaires", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"

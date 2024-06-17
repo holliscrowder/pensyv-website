@@ -11,7 +11,7 @@ function Survey() {
     
 
     useEffect(() => {
-        fetch("api/check_session")
+        fetch("/api/check_session")
           .then((response) => {
             if (response.status == 200) {  
               return response.json()

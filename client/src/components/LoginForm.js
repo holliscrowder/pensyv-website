@@ -20,7 +20,7 @@ export const LoginForm = ({user, setUser}) => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("api/login", {
+            fetch("/api/login", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

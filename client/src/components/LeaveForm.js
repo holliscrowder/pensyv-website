@@ -21,7 +21,7 @@ export const LeaveForm = () => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("api/users", {
+            fetch("/api/users", {
                 method: "DELETE",
                 headers: {
                     "Content-type": "application/json"

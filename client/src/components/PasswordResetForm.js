@@ -39,7 +39,7 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("api/users", {
+            fetch("/api/users", {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json"

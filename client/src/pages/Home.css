@@ -19,3 +19,11 @@
     width: min(80%, 700px);
     margin: auto;
 }
+
+.selectors {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+}

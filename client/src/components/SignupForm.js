@@ -42,7 +42,7 @@ export const SignupForm = ({user, setUser}) => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("api/signup", {
+            fetch("/api/signup", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
