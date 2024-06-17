@@ -13,3 +13,9 @@
     margin-top: min(36px, 20%);
     text-align: center;
 }
+
+.questionDisplayAverage {
+    text-align: left;
+    width: min(80%, 700px);
+    margin: auto;
+}

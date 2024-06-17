@@ -53,7 +53,7 @@ function Home() {
 
     const chartData = []
 
-  // create 
+  // create summary chart data containing all question data across time
   for (let i = 0; i < submissions_q0.length; i++) {
     let scores = [submissions_q0[i].score, submissions_q1[i].score, submissions_q2[i].score, submissions_q3[i].score, submissions_q4[i].score]
     let scores_avg = scores.reduce((a, b) => a + b)/scores.length;
@@ -77,6 +77,7 @@ function Home() {
     return this;
   }
 
+   // filter chart data to only display selected dates
   let dateFilter = new Date();
   if (dates === "oneMonth"){
     dateFilter.subtractDays(30);
@@ -91,14 +92,10 @@ function Home() {
     dateFilter.subtractDays(10000);
   }
 
-  // filter chart data to only display selected dates
   const filteredChartData = chartData.filter((data) => (new Date(data.created_on_date) >= new Date(dateFilter)));
-  // console.log(chartData);
-  console.log(dates)
-  console.log(dateFilter)
-  console.log(filteredChartData)
 
-  filteredChartData.sort((a,b) => new Date(a.created_on) - new Date(b.created_on));
+  // sort by date in ascending order
+  const sortedFilteredChartData = filteredChartData.sort((a,b) => new Date(a.created_on_str) - new Date(b.created_on_str));
 
     return (
       <>
@@ -107,7 +104,30 @@ function Home() {
           <br />
           <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} className = "selector"/>
           <br />
-          <Chart allScores = {filteredChartData} dates = {dates} chartQuestion = {chartQuestion}/> 
+          <Chart allScores = {sortedFilteredChartData} dates = {dates} chartQuestion = {chartQuestion}/> 
+          <br />
+          {chartQuestion === "average" ? 
+            (
+              <div className = "questionDisplayAverage">
+                <p>Average score across all questions:</p>
+                <br />
+                {questions.map((question, index) => (
+                  <div>
+                    <p><b>Question {String(index+1)}:</b> {question.question_text}</p>
+                    <br />
+                  </div>
+                  ))}
+              </div>
+            )
+          :
+          (
+            <div>
+              <p><b>Question {chartQuestion.substring(1)}:</b> {questions[Number(chartQuestion.substring(1) - 1)].question_text}</p>
+
+            </div>
+          )
+          
+          }
         </div>
       </>
     );
