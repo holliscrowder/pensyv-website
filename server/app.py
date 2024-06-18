@@ -215,8 +215,6 @@ class Questionnaires(Resource):
         user = User.query.filter(User.id == session.get("user_id")).first()
         questionnaires = user.questionnaires
 
-        # questionnaires = [questionnaire.to_dict() for questionnaire in Questionnaire.query.filter(User.id == session["user_id"])]
-
         # format for JSON response
         if questionnaires:
             questionnaires_response = jsonify([[questionnaire.to_dict(rules=("submission.created_on","-submission.questionnaires", "-submission.user_id", "-submission.id", "-submission.updated_on")) for questionnaire in group ] for group in questionnaires])

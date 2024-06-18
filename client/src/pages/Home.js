@@ -51,7 +51,13 @@ function Home() {
     const submissions_q3 = submissions_flat.filter((submission) => (submission.question_id === questions[3].id))
     const submissions_q4 = submissions_flat.filter((submission) => (submission.question_id === questions[4].id))
 
-    const chartData = []
+    let chartData = []
+
+    // function to subtract selected days from current date
+    Date.prototype.subtractDays = function (days) {
+      this.setTime(this.getTime() - (days * 24 * 60 * 60 * 1000));
+      return this;
+    }
 
   // create summary chart data containing all question data across time
   for (let i = 0; i < submissions_q0.length; i++) {
@@ -60,7 +66,7 @@ function Home() {
     chartData.push({
       "id": submissions_q0[i].submission_id,
       "created_on_str": submissions_q0[i].created_on.substring(0,10),
-      "created_on_date": new Date(submissions_q0[i].created_on.substring(0,10)),
+      "created_on_date": new Date(submissions_q0[i].created_on.substring(0,10)).subtractDays(-1),
       "checked": submissions_q0[i].checked,
       "Q1": scores[0],
       "Q2": scores[1],
@@ -71,11 +77,19 @@ function Home() {
     })
   };
 
-  // subtract selected days from current date
-  Date.prototype.subtractDays = function (days) {
-    this.setTime(this.getTime() - (days * 24 * 60 * 60 * 1000));
-    return this;
-  }
+  // sort chart data by created on string in descending order, prioritizing last submission on each day
+  const chartDataDescending = chartData.sort((a,b) => b.created_on_date - a.created_on_date);
+
+  // remove duplicate submissions made on the same day, prioritizing the last submission on each day
+  let chartDataNoDuplicates = [];
+  let unique = []
+  chartDataDescending.forEach((data) => {
+    if (!unique.includes(data.created_on_str)){
+      unique.push(data.created_on_str);
+      chartDataNoDuplicates.push(data);
+    }
+    return chartDataNoDuplicates;
+  });
 
    // filter chart data to only display selected dates
   let dateFilter = new Date();
@@ -92,10 +106,10 @@ function Home() {
     dateFilter.subtractDays(10000);
   }
 
-  const filteredChartData = chartData.filter((data) => (new Date(data.created_on_date) >= new Date(dateFilter)));
+  const chartDataSelectedDates = chartDataNoDuplicates.filter((data) => (new Date(data.created_on_date) >= new Date(dateFilter)));
 
-  // sort by date in ascending order
-  const sortedFilteredChartData = filteredChartData.sort((a,b) => new Date(a.created_on_str) - new Date(b.created_on_str));
+  // re-sort by date in ascending order
+  const chartDataSelectedDatesAscending = chartDataSelectedDates.sort((a,b) => new Date(a.created_on_str) - new Date(b.created_on_str));
 
     return (
       <>
@@ -106,7 +120,7 @@ function Home() {
             <QuestionSelector chartQuestion = {chartQuestion} setChartQuestion = {setChartQuestion} />
             <br />
           </ul>
-          <Chart allScores = {sortedFilteredChartData} dates = {dates} chartQuestion = {chartQuestion}/> 
+          <Chart allScores = {chartDataSelectedDatesAscending} dates = {dates} chartQuestion = {chartQuestion} /> 
           <br />
           {chartQuestion === "average" ? 
             (

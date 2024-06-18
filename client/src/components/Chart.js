@@ -6,6 +6,12 @@ import moment from "moment";
 
 export default function Chart({allScores, dates, chartQuestion}) {
 
+    // function to subtract selected days from current date
+    Date.prototype.subtractDays = function (days) {
+        this.setTime(this.getTime() - (days * 24 * 60 * 60 * 1000));
+        return this;
+        }
+
     // filter chart data based on question
     const questionLabel = {
         "Q1": "Question 1",
@@ -34,7 +40,7 @@ export default function Chart({allScores, dates, chartQuestion}) {
             }}
             >
             <CartesianGrid />
-            <XAxis dataKey="created_on_str" tickFormatter={(timestamp) => new Date(timestamp).toLocaleDateString()} domain = {['auto', 'auto']} name = "Time" className = "x-axis">
+            <XAxis dataKey="created_on_str" tickFormatter={(timestamp) => new Date(timestamp).subtractDays(-1).toLocaleDateString()} domain = {['auto', 'auto']} name = "Time" className = "x-axis">
             </XAxis>
             <YAxis domain = {[0, 4]}>
                 <Label 
