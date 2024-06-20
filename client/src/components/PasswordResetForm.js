@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
 import "./PasswordResetForm.css";
 import { Link } from "react-router-dom";
 
 export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
-    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
 
     /* add password confirm function */
@@ -100,7 +98,6 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
                         onChange = {formik.handleChange}
                         value = {formik.values.passwordConfirm}
                         onBlur={formik.handleBlur}
-                        // secureTextEntry
                     />
                     <p style = {{ color: "red" }}> {formik.errors.newPasswordConfirm}</p>
                     <button type = "submit">Update Password</button>

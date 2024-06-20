@@ -3,7 +3,6 @@ import "./Profile.css"
 import { useOutletContext } from "react-router-dom";
 import {ProfileForm} from "../components/ProfileForm";
 import ProfileCard from "../components/ProfileCard";
-import { PasswordResetForm } from "../components/PasswordResetForm";
 import { Link } from "react-router-dom";
 
 function UpdateProfile() {

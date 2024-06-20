@@ -4,13 +4,11 @@
 }
 
 .signup {
-    /* text-align: left; */
     padding: 10px 0px 10px 20px;
     background-color: rgb(246, 240, 240, 0.5);
-    /* width: 20%; */
     margin: auto;
     border-radius: 8px;
-    width: min(30%, 200px);
+    width: min(60%, 200px);
     box-shadow: rgba(180, 92, 124, 0.5) 0 2px 5px 0;
 }
 
@@ -18,7 +16,7 @@
     text-align: center;
     padding: 10px 10px 10px 10px;
     margin: auto;
-    width: min(30%, 200px);
-    margin-top: min(30%, 100px);
+    width: min(60%, 200px);
+    margin-top: min(30%, 80px);
 
 }

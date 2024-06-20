@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
 
 export default function QuestionSelector ( {chartQuestion, setChartQuestion}) {
-
 
     return (
         <form>

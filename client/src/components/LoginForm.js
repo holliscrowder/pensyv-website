@@ -76,8 +76,4 @@ export const LoginForm = ({user, setUser}) => {
             </div>
         </>
     )
-
-
-
-
 }

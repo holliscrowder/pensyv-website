@@ -3,7 +3,6 @@ import "./NavBar.css";
 
 function NavBar({user, isLoggedIn}) {
 
-
     return isLoggedIn ?     
         <nav className="navbar">
             <NavLink to="/" className="nav-link">

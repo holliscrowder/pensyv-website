@@ -4,10 +4,8 @@ import * as yup from "yup";
 import "./ProfileForm.css";
 import { Link } from "react-router-dom";
 
-
 export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
     
-
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email"),
         username: yup.string().max(50),
@@ -105,8 +103,4 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
         <Link to = {`/profile`} className = "button-update-profile">Back to Profile</Link>
         </>
     )
-
-
-
-
 }

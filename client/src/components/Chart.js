@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-// import { Line } from "react-chartjs-2";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from "recharts";
 import "./Chart.css";
-import moment from "moment";
 
 export default function Chart({allScores, dates, chartQuestion}) {
 

@@ -75,8 +75,4 @@ export const LeaveForm = () => {
             {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>
     )
-
-
-
-
 }

@@ -4,23 +4,6 @@ import { useOutletContext } from "react-router-dom";
 function ProfileCard() {
     const [user, setUser, isLoggedIn] = useOutletContext();
 
-    // useEffect(() => {
-    //     fetch("api/check_session")
-    //       .then((response) => {
-    //         if (response.status == 200) {  
-    //           return response.json()
-    //         } else {
-    //           throw response
-    //         }
-    //       })
-    //       .then((data) => {
-    //         setUser(data)
-        
-    //       })
-    //       .catch(e => {
-    //       });
-    //   }, []);
-
     return (
         <>
             <div className = "profile_card">
