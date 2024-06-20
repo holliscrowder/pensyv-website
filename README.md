@@ -1,8 +1,8 @@
-# Pensyv Questionnaire
+# Pensyv Website
 
 ## Introduction
 
-Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. User and questionnaire data are posted to the backend, where they are then stored on a secure database. Privacy is a top priority; users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research. 
+Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. Users can track their questionnaire reponses over time via data visualizations on the homepage. User and questionnaire data are posted to the backend, where they are then stored on a secure database. Privacy is a top priority; users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will incorporate sophisticated statistical analyses and will enable users to opt in to data sharing for macro-level research. 
 
 ---
 
@@ -15,6 +15,8 @@ _Login:_ Login with the email entered during sign up.
 _Logout:_ Logout any time from any page via the 'Logout' button.
 
 _Survey:_ Fill out the daily questionnaire by answering the five questions on a scale of 0-4.
+
+_Home:_ View the pensyv mission statement when logged out, and view graphical data visualizations when logged in.
 
 _Profile:_ View user profile details and update, if desired.
 
@@ -33,9 +35,10 @@ _Leave:_ Leave alpha testing by entering the associated email and username.
 5. Run the backend virtual environment using _pipenv shell_
 6. Run the backend development server using _python server/app.py_
 7. Access the backend API via proxy through your browser at _http://localhost:5555/_
+8. Seed mock user data using _python server/seed.py_
 
-## Resources - Pensyv Questionnaire API
-The pensyv questionnaire frontend is connected to the backend via API, resources for which are defined in _server/app.py_. Resources (routes) and supported methods include:
+## Resources - Pensyv Website API
+The Pensyv frontend is connected to the backend via API, resources for which are defined in _server/app.py_. Resources (routes) and supported methods include:
 
 _signup_:
   * post()
@@ -57,8 +60,8 @@ _users_:
   * delete()
 
 _questionnaires_:
+  * get()
   * post()
-
 
 ## Programs Used
 Frontend:
@@ -67,6 +70,7 @@ Frontend:
 - React: Frontend framework for building interactive user interfaces
   - React Router: Library for handling navigation within a React application
   - Formik, yup: Library for handling and validating form submissions
+  - Recharts: Library for handling graphical data visualization
 
 Backend:
 - Python
