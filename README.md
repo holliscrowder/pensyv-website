@@ -23,7 +23,7 @@ _Profile:_ View user profile details and update, if desired.
 _Leave:_ Leave alpha testing by entering the associated email and username.
 
 ## Demo
-![Demo GIF](client/public/pensyv_quesitonnaire_gif.gif)
+![Demo GIF](client/public/pensyv_website_gif.gif)
 
 ## Development Instructions
 
