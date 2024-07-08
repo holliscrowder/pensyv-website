@@ -19,6 +19,8 @@ export const LoginForm = ({user, setUser}) => {
             password: ""
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             fetch("/api/login", {
                 method: "POST",
@@ -67,6 +69,7 @@ export const LoginForm = ({user, setUser}) => {
                         placeholder = "password"
                         onChange = {formik.handleChange}
                         value = {formik.values.password}
+                        type = "password"
                     />
                     <p style = {{ color: "red" }}> {formik.errors.password}</p>
                     <br />

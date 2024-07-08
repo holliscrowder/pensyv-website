@@ -41,6 +41,8 @@ export const SignupForm = ({user, setUser}) => {
             passwordConfirm: ""
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             fetch("/api/signup", {
                 method: "POST",

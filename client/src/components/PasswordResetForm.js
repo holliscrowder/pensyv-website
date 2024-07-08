@@ -36,6 +36,8 @@ export const PasswordResetForm = ({user, setUser, isUpdated, setIsUpdated}) => {
             newPasswordConfirm: ""
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             fetch("/api/users", {
                 method: "PATCH",

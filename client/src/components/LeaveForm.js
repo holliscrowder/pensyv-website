@@ -20,6 +20,8 @@ export const LeaveForm = () => {
             password: "",
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             fetch("/api/users", {
                 method: "DELETE",

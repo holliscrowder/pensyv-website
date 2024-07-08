@@ -27,6 +27,8 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
             checked: false
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: 
             (values) => {
                 fetch("/api/questionnaires", {
