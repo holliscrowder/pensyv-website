@@ -78,7 +78,7 @@ export const SignupForm = ({user, setUser}) => {
                 <input
                     id = "email"
                     name = "email"
-                    placeholder = "email"
+                    placeholder = "email (required)"
                     onChange = {formik.handleChange}
                     value = {formik.values.email}
                 />
@@ -88,7 +88,7 @@ export const SignupForm = ({user, setUser}) => {
                 <input 
                     id = "username"
                     name = "username"
-                    placeholder = "username"
+                    placeholder = "username (required)"
                     onChange = {formik.handleChange}
                     value = {formik.values.username}
                 />
@@ -108,7 +108,7 @@ export const SignupForm = ({user, setUser}) => {
                 <select 
                     id = "sex"
                     name = "sex"
-                    placeholder = "sex (optional"
+                    placeholder = "sex (optional)"
                     onChange = {formik.handleChange}
                     value = {formik.values.sex}
                 >
@@ -137,7 +137,7 @@ export const SignupForm = ({user, setUser}) => {
                     onBlur={formik.handleBlur}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.password}</p>
-                <label htmlFor = "passwordConfirm">Confirn Password</label>
+                <label htmlFor = "passwordConfirm">Confirm Password</label>
                 <br />
                 <input 
                     id = "passwordConfirm"
